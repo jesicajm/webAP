@@ -147,7 +147,7 @@ h1,h2,h3,h4{font-weight:400}
   transition:transform .25s var(--ease), box-shadow .3s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
   white-space:nowrap;
 }
-.btn--primary{background:var(--navy);color:var(--paper-2)}
+.btn--primary{background:var(--navy);color:var(--paper-2);border-color:var(--brass)}
 .btn--primary:hover{background:var(--navy-2);box-shadow:var(--sh-2);transform:translateY(-1px)}
 .btn--ghost{background:transparent;color:var(--ink);border-color:var(--line-3)}
 .btn--ghost:hover{border-color:var(--navy);background:rgba(19,32,56,.03)}
@@ -264,6 +264,10 @@ section{padding-block:clamp(78px,9vw,128px)}
    ARQUETIPOS
    ===================================================================== */
 .arch{background:var(--paper)}
+.arch__case{margin-top:clamp(50px,7vw,92px);display:flex;justify-content:center}
+.arch__case-inner{width:100%;max-width:600px;background:linear-gradient(168deg,#16243f,#101b30);border-radius:18px;padding:clamp(30px,4vw,56px);border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px -28px rgba(19,32,56,.5)}
+.arch__case-cap{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(233,236,239,.6);text-align:center;margin-bottom:clamp(16px,3vw,28px)}
+.arch__case-inner .orbit{width:min(420px,72vw);height:min(420px,72vw);max-width:none;aspect-ratio:auto;margin:0 auto}
 .arch__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,56px);margin-top:52px;align-items:start}
 .arch__tabs{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .arch__tab{display:flex;align-items:baseline;gap:16px;text-align:left;padding:22px 6px;
@@ -541,7 +545,7 @@ section{padding-block:clamp(78px,9vw,128px)}
 .pay__k{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-2);margin-bottom:14px}
 .pay__t{font-family:var(--serif);font-size:clamp(1.35rem,2.2vw,1.8rem);line-height:1.18;color:var(--paper-2);margin-bottom:36px;letter-spacing:-.02em;max-width:56ch}
 .pay__steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.16)}
-.paystep{padding:26px 28px 4px 0;border-right:1px solid rgba(255,255,255,.12)}
+.paystep{padding:26px 30px 6px 30px;border-right:1px solid rgba(255,255,255,.12)}
 .paystep:first-child{padding-left:0}
 .paystep:last-child{border-right:0;padding-right:0}
 .paystep__n{font-family:var(--serif);font-size:1.5rem;color:var(--blue-2);line-height:1;margin-bottom:14px;font-variant-numeric:lining-nums}
@@ -694,7 +698,7 @@ section{padding-block:clamp(78px,9vw,128px)}
 .foot__col a{font-size:.9rem;color:rgba(233,236,239,.7);transition:color .2s}
 .foot__col a:hover{color:var(--blue-2)}
 .foot__bottom{max-width:var(--wrap);margin:0 auto;padding:24px var(--gutter) 0;border-top:1px solid rgba(255,255,255,.08);
-  font-size:.8rem;color:rgba(233,236,239,.45);position:relative;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  font-size:.8rem;color:rgba(233,236,239,.45);position:relative;display:flex;justify-content:center;text-align:center;gap:16px;flex-wrap:wrap}
 
 /* ---------- Bloques añadidos por ajustes de copy ---------- */
 .deliv__leadnote{margin-top:24px;padding-top:22px;border-top:1px solid var(--line);font-size:.95rem;line-height:1.62;color:var(--ink-2);max-width:none}
@@ -824,6 +828,100 @@ section{padding-block:clamp(78px,9vw,128px)}
 .modal__actions{display:flex;flex-wrap:wrap;gap:12px}
 .modal__actions .btn{flex:1 1 auto;justify-content:center;white-space:normal;min-width:0}
 @media (max-width:480px){.modal__actions{flex-direction:column}.modal__actions .btn{width:100%}}
+
+/* ===== Sección 1 (arch) en navy #132038 ===== */
+.arch{background:#132038;color:var(--paper-2)}
+.arch .chapter{color:rgba(233,236,239,.6)}
+.arch .chapter b{color:var(--brass-2)}
+.arch .section-h h2{color:#f4f6f8}
+.arch .section-h p{color:rgba(233,236,239,.78)}
+.arch__tabs{border-top-color:rgba(255,255,255,.16)}
+.arch__tab{border-bottom-color:rgba(255,255,255,.12)}
+.arch__tab-n{color:rgba(233,236,239,.5)}
+.arch__tab.is-active .arch__tab-n{color:var(--brass-2)}
+.arch__tab-t{color:rgba(233,236,239,.6)}
+.arch__tab.is-active .arch__tab-t,.arch__tab:hover .arch__tab-t{color:#f4f6f8}
+.arch__tab.is-active::before{background:var(--brass-2)}
+.arch__lead{color:#f4f6f8}
+.arch__desc{color:rgba(233,236,239,.78)}
+.arch__desc strong{color:#f4f6f8}
+.arch__diseno h4{color:rgba(233,236,239,.55)}
+.arch__diseno li{color:#eef1f4}
+.arch__step{border-top-color:rgba(255,255,255,.14)}
+.arch__step-k{color:#8fb4d6}
+.arch__step p{color:rgba(233,236,239,.72)}
+.arch__hint{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.4;color:rgba(233,236,239,.55);max-width:42ch;padding:6px 0}
+.arch__panel.is-chosen .arch__hint{display:none}
+.arch__case-inner{background:none;border:0;box-shadow:none;border-radius:0;padding:0}
+
+
+/* ===== Muestra · Tu estructura (sub-bloque en navy #132038) ===== */
+.deliv__sample{background:#132038;color:var(--paper-2);padding:clamp(30px,4.5vw,60px);border-radius:14px}
+.deliv__sample .chapter{color:rgba(233,236,239,.6)}
+.deliv__sample .chapter b{color:var(--brass-2)}
+.deliv__sample-h h3{color:#f4f6f8}
+.deliv__sample .deliv__note{color:rgba(233,236,239,.6)}
+.deliv__sample .viz-flow{color:rgba(233,236,239,.5)}
+.deliv__sample .deliv__viz{background:rgba(255,255,255,.03)}
+
+/* ============ Vibración: profundidad, acento brass y movimiento ============ */
+/* Degradado sutil en secciones/bloques oscuros */
+.arch{background:linear-gradient(180deg,#132038,#0d1726)}
+.foot{background:linear-gradient(180deg,#132038,#0d1726)}
+.pay{background:linear-gradient(180deg,#15233d,#0d1726)}
+.deliv__sample{background:linear-gradient(180deg,#132038,#0f1a2c)}
+.proof{background:radial-gradient(900px 480px at 16% 0%, rgba(47,143,196,.10), transparent 60%), linear-gradient(180deg,#132038,#0d1726)}
+
+/* Halo tras números clave */
+.hero__rot{position:relative}
+.hero__rot::before{content:"";position:absolute;left:-6px;top:-10px;width:240px;height:150px;background:radial-gradient(58% 58% at 32% 42%, rgba(191,157,92,.18), transparent 70%);pointer-events:none;z-index:0}
+.hero__rot>*{position:relative;z-index:1}
+.chapter b{text-shadow:0 0 18px rgba(191,157,92,.22)}
+
+/* Subrayado animado en el H1 */
+.hero__title{position:relative}
+.hero__title::after{content:"";display:block;width:0;height:3px;background:var(--brass);border-radius:2px;margin-top:20px}
+@keyframes ulgrow{from{width:0}to{width:88px}}
+@media (prefers-reduced-motion:no-preference){.hero__title::after{animation:ulgrow .95s var(--ease) .35s forwards}}
+@media (prefers-reduced-motion:reduce){.hero__title::after{width:88px}}
+
+/* Acento brass en CTAs primarios de planes/puertas */
+.plan__cta--primary{border-color:var(--brass)}
+.door__cta--primary{border-color:var(--brass)}
+
+/* Micro-interacción hover en tarjetas */
+.plan,.pcard,.pwin{transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease)}
+.plan:hover{transform:translateY(-3px);box-shadow:var(--sh-2);border-color:var(--brass)}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--sh-navy);border-color:var(--brass-2)}
+.pwin:hover{transform:translateY(-2px);border-color:var(--brass-2);background:rgba(255,255,255,.055)}
+.tst__card:hover{border-color:var(--brass)}
+
+/* Stagger de entrada en grupos */
+@media (prefers-reduced-motion:no-preference){
+  .pwins .pwin,.pmetrics .pmetric,.plans__grid .plan,.pay__steps .paystep{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  .pwins.is-in .pwin,.pmetrics.is-in .pmetric,.plans__grid.is-in .plan,.pay.is-in .paystep{opacity:1;transform:none}
+  .pwins.is-in .pwin:nth-child(2),.pmetrics.is-in .pmetric:nth-child(2),.plans__grid.is-in .plan:nth-child(2),.pay.is-in .paystep:nth-child(2){transition-delay:.1s}
+  .pwins.is-in .pwin:nth-child(3),.pmetrics.is-in .pmetric:nth-child(3),.plans__grid.is-in .plan:nth-child(3),.pay.is-in .paystep:nth-child(3){transition-delay:.2s}
+  .pmetrics.is-in .pmetric:nth-child(4){transition-delay:.3s}
+}
+
+/* ============ Línea de tiempo vertical (Cómo funciona) ============ */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl__item{position:relative;padding-left:34px;padding-bottom:22px}
+.tl__item:last-child{padding-bottom:0}
+.tl__item::before{content:"";position:absolute;left:5px;top:7px;bottom:-5px;width:1px;background:linear-gradient(var(--brass),rgba(154,124,64,.22))}
+.tl__item:last-child::before{display:none}
+.tl__node{position:absolute;left:0;top:4px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:1.5px solid var(--brass);box-shadow:0 0 0 3px rgba(154,124,64,.12)}
+.tl__k{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);margin-bottom:5px}
+.tl__d{font-size:.92rem;line-height:1.5;color:var(--ink-2);margin:0}
+@media (prefers-reduced-motion:no-preference){
+  .tl__item{opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+  .hserv.is-in .tl__item{opacity:1;transform:none}
+  .hserv.is-in .tl__item:nth-child(2){transition-delay:.09s}
+  .hserv.is-in .tl__item:nth-child(3){transition-delay:.18s}
+  .hserv.is-in .tl__item:nth-child(4){transition-delay:.27s}
+  .hserv.is-in .tl__item:nth-child(5){transition-delay:.36s}
+}
   </style>
 </head>
 <body>
@@ -855,7 +953,6 @@ section{padding-block:clamp(78px,9vw,128px)}
       <div class="hero__wrap">
         <div class="hero__top">
         <div class="hero__copy">
-          <div class="chapter"><b>00</b> Arquitectura Patrimonial</div>
           <h1 class="hero__title">Más orden. Menos miedo.<i>Con una estructura que de verdad te protege.</i></h1>
           <p class="hero__sub">No vendemos horas de asesoría. Diseñamos la estructura fiscal, legal, financiera y sucesoral que ordena tu patrimonio y protege lo que has construido, con un plano claro, no con improvisación.</p>
           <div class="hero__ctas">
@@ -936,114 +1033,26 @@ section{padding-block:clamp(78px,9vw,128px)}
     </section>
 
     <!-- DIAGNÓSTICO -->
-    <section class="diag" id="diagnostico">
-      <div class="wrap">
-        <div class="diag__top">
-          <div class="section-h reveal">
-            <div class="chapter"><b>01</b> Diagnóstico</div>
-            <h2>Cinco frentes que casi nadie tiene <i>realmente resueltos.</i></h2>
-            <p>La mayoría llega con una o varias de estas preocupaciones. Si te reconoces en varias, hay una arquitectura que las resuelve en conjunto; si es solo una, la resolvemos puntual. Tú decides hasta dónde llegar.</p>
-          </div>
-          <div class="diag__orbit reveal">
-            <div class="orbit">
-            <div class="orbit__path"></div>
-            <div class="orbit__core" aria-hidden="true"><svg viewBox="0 0 360 264" xmlns="http://www.w3.org/2000/svg"><rect x="90" y="16" width="180" height="50" rx="10" fill="rgba(255,255,255,0.08)" stroke="#ffffff" stroke-width="1.4"/><text x="180" y="41" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12.5" fill="#f4f6f8">Tú · la persona</text><line x1="180" y1="66" x2="180" y2="88" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><line x1="95" y1="88" x2="265" y2="88" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><line x1="95" y1="88" x2="95" y2="118" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><line x1="265" y1="88" x2="265" y2="118" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><rect x="20" y="118" width="150" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="95.0" y="143.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12" fill="#f4f6f8">Empresa</text><rect x="190" y="118" width="150" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="265.0" y="143.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12" fill="#f4f6f8">Inmuebles</text><line x1="95" y1="168" x2="95" y2="190" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><line x1="265" y1="168" x2="265" y2="190" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><rect x="20" y="190" width="150" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="95.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12" fill="#f4f6f8">Portafolio</text><rect x="190" y="190" width="150" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="265.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12" fill="#f4f6f8">Cuentas</text></svg></div>
-            <div class="orbit__ring">
-              <div class="orbit__item" style="top:8%;left:50%"><div class="orbit__pill orbit__pill--crit"><span class="orbit__dot"></span>Sin blindaje</div></div>
-              <div class="orbit__item" style="top:29%;left:86%"><div class="orbit__pill orbit__pill--crit"><span class="orbit__dot"></span>Sucesión · 30%</div></div>
-              <div class="orbit__item" style="top:71%;left:86%"><div class="orbit__pill orbit__pill--crit"><span class="orbit__dot"></span>Estate tax 40%</div></div>
-              <div class="orbit__item" style="top:92%;left:50%"><div class="orbit__pill orbit__pill--alto"><span class="orbit__dot"></span>Riesgo UGPP</div></div>
-              <div class="orbit__item" style="top:71%;left:14%"><div class="orbit__pill orbit__pill--alto"><span class="orbit__dot"></span>Renta ordinaria</div></div>
-              <div class="orbit__item" style="top:29%;left:14%"><div class="orbit__pill orbit__pill--medio"><span class="orbit__dot"></span>Sin liquidez</div></div>
-            </div>
-          </div>
-          </div>
-        </div>
-
-        <ol class="pain-list">
-          <li class="pain" style="--pct:.98">
-            <div class="pain__idx">01</div>
-            <div>
-              <h3 class="pain__t">Todo tu patrimonio está a tu nombre.</h3>
-              <p class="pain__d">Un problema civil, laboral o familiar en cualquier frente puede alcanzar todos tus bienes en cadena. Y ante una eventualidad, tu familia entra en un proceso sucesoral largo y costoso, sin acceso inmediato a la liquidez que necesita.</p>
-            </div>
-            <div class="pain__meter">
-              <span class="pain__meter-lbl">Frecuencia</span>
-              <div class="pain__meter-track"><div class="pain__meter-fill"></div></div>
-              <div class="pain__meter-num">98%</div>
-            </div>
-          </li>
-          <li class="pain" style="--pct:.85">
-            <div class="pain__idx">02</div>
-            <div>
-              <h3 class="pain__t">Tienes riesgo latente ante la UGPP.</h3>
-              <p class="pain__d">Si recibes honorarios, dividendos, rentas o participaciones y no cotizas seguridad social sobre el 40% de esos ingresos no laborales, la UGPP puede requerirte aportes retroactivos de hasta cinco años, con sanciones proporcionales a lo omitido.</p>
-            </div>
-            <div class="pain__meter">
-              <span class="pain__meter-lbl">Frecuencia</span>
-              <div class="pain__meter-track"><div class="pain__meter-fill"></div></div>
-              <div class="pain__meter-num">85%</div>
-            </div>
-          </li>
-          <li class="pain" style="--pct:.90">
-            <div class="pain__idx">03</div>
-            <div>
-              <h3 class="pain__t">Tu sucesión no está resuelta.</h3>
-              <p class="pain__d">Sin testamento, sin estructura societaria, sin beneficiarios designados. Tu familia no conoce el mapa completo de tus activos. Con activos en el exterior, el costo sucesoral puede escalar hasta el 40%. Sin planeación, la herencia se vuelve conflicto.</p>
-            </div>
-            <div class="pain__meter">
-              <span class="pain__meter-lbl">Frecuencia</span>
-              <div class="pain__meter-track"><div class="pain__meter-fill"></div></div>
-              <div class="pain__meter-num">90%</div>
-            </div>
-          </li>
-          <li class="pain" style="--pct:.70">
-            <div class="pain__idx">04</div>
-            <div>
-              <h3 class="pain__t">Tus asesores trabajan cada uno por su lado.</h3>
-              <p class="pain__d">Tu contador presenta tus declaraciones a tiempo, pero no te dice si te conviene el Régimen Simple o el Ordinario, ni qué deducciones estás dejando sobre la mesa. Tu abogado responde cuando lo llamas. Tu banco te ofrece productos. Nadie mira el conjunto ni coordina las decisiones bajo una sola estrategia, y ahí se escapan impuestos evitables y palancas fiscales sin activar.</p>
-            </div>
-            <div class="pain__meter">
-              <span class="pain__meter-lbl">Frecuencia</span>
-              <div class="pain__meter-track"><div class="pain__meter-fill"></div></div>
-              <div class="pain__meter-num">70%</div>
-            </div>
-          </li>
-          <li class="pain" style="--pct:.65">
-            <div class="pain__idx">05</div>
-            <div>
-              <h3 class="pain__t">Tu patrimonio está concentrado y sin liquidez.</h3>
-              <p class="pain__d">Buena parte atrapada en inmuebles o en un CDT rindiendo menos que la inflación. Poca diversificación por sector, geografía o moneda. Sin diversificar estratégicamente una porción en moneda fuerte, tu crecimiento real, después de inflación— queda comprometido.</p>
-            </div>
-            <div class="pain__meter">
-              <span class="pain__meter-lbl">Frecuencia</span>
-              <div class="pain__meter-track"><div class="pain__meter-fill"></div></div>
-              <div class="pain__meter-num">65%</div>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
     <!-- ARQUETIPOS -->
-    <section class="arch">
+    <section class="arch" id="diagnostico">
       <div class="wrap">
-        <div class="section-h reveal">
-          <div class="chapter"><b>02</b> ¿En cuál te reconoces?</div>
+                <div class="section-h reveal">
+          <div class="chapter"><b>01</b> ¿En cuál te reconoces?</div>
           <h2>Cada familia llega con una historia distinta.</h2>
           <p>Pero casi siempre con la misma inquietud: cómo poner en orden lo construido antes de que un imprevisto lo altere. Elige la situación más parecida a la tuya.</p>
         </div>
 
         <div class="arch__grid">
           <div class="arch__tabs" role="tablist">
-            <button class="arch__tab is-active" data-arch="A" role="tab"><span class="arch__tab-n">01</span><span class="arch__tab-t">Tienes una empresa y patrimonio personal</span></button>
+            <button class="arch__tab" data-arch="A" role="tab"><span class="arch__tab-n">01</span><span class="arch__tab-t">Tienes una empresa y patrimonio personal</span></button>
             <button class="arch__tab" data-arch="B" role="tab"><span class="arch__tab-n">02</span><span class="arch__tab-t">Profesional o empleado con ingresos altos</span></button>
             <button class="arch__tab" data-arch="C" role="tab"><span class="arch__tab-n">03</span><span class="arch__tab-t">Recibiste o vas a recibir un patrimonio</span></button>
             <button class="arch__tab" data-arch="D" role="tab"><span class="arch__tab-n">04</span><span class="arch__tab-t">Vives fuera o mueves capital entre países</span></button>
           </div>
 
           <div class="arch__panel">
-            <div class="arch__body is-active" data-arch="A">
+            <div class="arch__hint">Selecciona la situación más parecida a la tuya para ver cómo la resolvemos.</div>
+            <div class="arch__body" data-arch="A">
               <p class="arch__lead">Tu empresa creció y hoy tu patrimonio personal está mezclado con el empresarial. Un problema del negocio puede alcanzar tu casa, tu carro, tus ahorros.</p>
               <p class="arch__desc">Necesitas <strong>separar lo personal de lo empresarial</strong> con la estructura societaria correcta, blindar tu patrimonio familiar, ordenar la sucesión de la empresa antes de que se vuelva conflicto con socios o herederos, y activar las palancas fiscales que hoy nadie te muestra.</p>
               <div class="arch__diseno">
@@ -1082,6 +1091,22 @@ section{padding-block:clamp(78px,9vw,128px)}
             </div>
           </div>
         </div>
+        <div class="arch__case reveal">
+          <div class="arch__case-inner">
+            <div class="orbit">
+            <div class="orbit__path"></div>
+            <div class="orbit__core" aria-hidden="true"><svg viewBox="0 0 360 264" xmlns="http://www.w3.org/2000/svg"><rect x="90" y="16" width="180" height="50" rx="10" fill="rgba(255,255,255,0.08)" stroke="#ffffff" stroke-width="1.4"/><text x="180" y="41" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12.5" fill="#f4f6f8">Tú · la persona</text><line x1="180" y1="66" x2="180" y2="88" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><line x1="95" y1="88" x2="265" y2="88" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><line x1="95" y1="88" x2="95" y2="118" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><line x1="265" y1="88" x2="265" y2="118" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><rect x="20" y="118" width="150" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="95.0" y="143.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12" fill="#f4f6f8">Empresa</text><rect x="190" y="118" width="150" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="265.0" y="143.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12" fill="#f4f6f8">Inmuebles</text><line x1="95" y1="168" x2="95" y2="190" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><line x1="265" y1="168" x2="265" y2="190" stroke="rgba(255,255,255,0.30)" stroke-width="0.75"/><rect x="20" y="190" width="150" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="95.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12" fill="#f4f6f8">Portafolio</text><rect x="190" y="190" width="150" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="265.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="12" fill="#f4f6f8">Cuentas</text></svg></div>
+            <div class="orbit__ring">
+              <div class="orbit__item" style="top:8%;left:50%"><div class="orbit__pill orbit__pill--crit"><span class="orbit__dot"></span>Sin blindaje</div></div>
+              <div class="orbit__item" style="top:29%;left:86%"><div class="orbit__pill orbit__pill--crit"><span class="orbit__dot"></span>Sucesión · 30%</div></div>
+              <div class="orbit__item" style="top:71%;left:86%"><div class="orbit__pill orbit__pill--crit"><span class="orbit__dot"></span>Estate tax 40%</div></div>
+              <div class="orbit__item" style="top:92%;left:50%"><div class="orbit__pill orbit__pill--alto"><span class="orbit__dot"></span>Riesgo UGPP</div></div>
+              <div class="orbit__item" style="top:71%;left:14%"><div class="orbit__pill orbit__pill--alto"><span class="orbit__dot"></span>Renta ordinaria</div></div>
+              <div class="orbit__item" style="top:29%;left:14%"><div class="orbit__pill orbit__pill--medio"><span class="orbit__dot"></span>Sin liquidez</div></div>
+            </div>
+          </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1091,7 +1116,7 @@ section{padding-block:clamp(78px,9vw,128px)}
         <div class="deliv__top">
           <div class="reveal">
             <div class="section-h">
-              <div class="chapter"><b>03</b> Lo que recibes</div>
+              <div class="chapter"><b>02</b> Lo que recibes</div>
               <h2>Qué está en riesgo, cuánto te cuesta y <i>quién lo resuelve.</i></h2>
               <p>No es un informe para archivar: es el mapa de decisiones de tu patrimonio. Ves qué tienes hoy, qué está expuesto y cuánto te costaría en pesos, la arquitectura que lo ordena y un plan por fases donde cada acción indica el profesional que la haría, tributarista, abogado o consultor patrimonial— y su horizonte. Sales sabiendo qué resolver primero, con quién y a qué costo. Ejecutar el plan es un paso aparte: lo haces por tu cuenta o con nuestro equipo, y se cotiza según lo que decidas.</p>
             </div>
@@ -1112,7 +1137,7 @@ section{padding-block:clamp(78px,9vw,128px)}
         <!-- Muestra: reorganización (visual) -->
         <div class="deliv__sample">
           <div class="deliv__sample-h reveal">
-            <div class="chapter"><b>03</b> Muestra · Tu estructura, reorganizada</div>
+            <div class="chapter">Muestra · Tu estructura, reorganizada</div>
             <h3>De todo a nombre de una persona a <i>una sola estructura.</i></h3>
           </div>
 
@@ -1130,14 +1155,14 @@ section{padding-block:clamp(78px,9vw,128px)}
             <div class="chapter"><b>·</b> Cómo entra tu dinero</div>
             <h3>Menos pasos y menos comisiones, <i>en días.</i></h3>
           </div>
-          <div class="deliv__viz reveal" aria-hidden="true"><svg viewBox="0 0 680 234" xmlns="http://www.w3.org/2000/svg"><defs><marker id="mi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2.5 L7.5,5 L0,7.5" fill="none" stroke="context-stroke" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><text x="18" y="76" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10.5" fill="#dda49a" letter-spacing="2">ANTES</text><g class="asm" style="animation-delay:0.1s"><rect x="72" y="50" width="120" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="132.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">US$200.000</text></g><line x1="192" y1="76" x2="226" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:0.25s"/><g class="asm" style="animation-delay:0.4s"><rect x="226" y="48" width="214" height="56" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1.2"/><text x="333.0" y="66" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Cadena de apps de dólar</text><text x="333.0" y="83" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">≈US$1.600 · ~69 giros</text></g><line x1="440" y1="76" x2="474" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:0.55s"/><g class="asm" style="animation-delay:0.7s"><rect x="474" y="50" width="156" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="552.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Llega ~US$198.400</text></g><text x="18" y="176" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10.5" fill="#8fc4e6" letter-spacing="2">DESPUÉS</text><g class="asm" style="animation-delay:0.95s"><rect x="72" y="150" width="120" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="132.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">US$200.000</text></g><line x1="192" y1="176" x2="226" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:1.1s"/><g class="asm" style="animation-delay:1.25s"><rect x="226" y="148" width="214" height="56" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1.2"/><text x="333.0" y="166" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Banco aliado · 1 wire</text><text x="333.0" y="183" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">en días · con FDIC</text></g><line x1="440" y1="176" x2="474" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:1.4s"/><g class="asm" style="animation-delay:1.55s"><rect x="474" y="150" width="156" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="552.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Llega US$200.000</text></g></svg></div>
+          <div class="deliv__viz reveal" aria-hidden="true"><svg viewBox="0 0 680 234" xmlns="http://www.w3.org/2000/svg"><defs><marker id="mi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2.5 L7.5,5 L0,7.5" fill="none" stroke="context-stroke" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><text x="8" y="76" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#dda49a" letter-spacing="1">ANTES</text><g class="asm" style="animation-delay:0.1s"><rect x="72" y="50" width="120" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="132.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">US$200.000</text></g><line x1="192" y1="76" x2="226" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:0.25s"/><g class="asm" style="animation-delay:0.4s"><rect x="226" y="48" width="214" height="56" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1.2"/><text x="333.0" y="66" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Cadena de apps de dólar</text><text x="333.0" y="83" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">≈US$1.600 · ~69 giros</text></g><line x1="440" y1="76" x2="474" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:0.55s"/><g class="asm" style="animation-delay:0.7s"><rect x="474" y="50" width="156" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="552.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Llega ~US$198.400</text></g><text x="8" y="176" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#8fc4e6" letter-spacing="1">DESPUÉS</text><g class="asm" style="animation-delay:0.95s"><rect x="72" y="150" width="120" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="132.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">US$200.000</text></g><line x1="192" y1="176" x2="226" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:1.1s"/><g class="asm" style="animation-delay:1.25s"><rect x="226" y="148" width="214" height="56" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1.2"/><text x="333.0" y="166" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Banco aliado · 1 wire</text><text x="333.0" y="183" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">en días · con FDIC</text></g><line x1="440" y1="176" x2="474" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:1.4s"/><g class="asm" style="animation-delay:1.55s"><rect x="474" y="150" width="156" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="552.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Llega US$200.000</text></g></svg></div>
           <p class="deliv__note">Con la cadena de apps de dólar, mover US$200.000 deja ~US$1.600 en comisiones y decenas de transferencias (con topes por giro) que toman semanas. Con el aliado bancario internacional, un solo wire y respaldo del seguro bancario federal (FDIC).</p>
 
           <div class="deliv__sample-h reveal" style="margin-top:clamp(48px,6vw,72px)">
             <div class="chapter"><b>·</b> Cómo sale el dinero de tu empresa</div>
             <h3>De un préstamo con riesgo a <i>una salida formal.</i></h3>
           </div>
-          <div class="deliv__viz reveal" aria-hidden="true"><svg viewBox="0 0 680 232" xmlns="http://www.w3.org/2000/svg"><defs><marker id="mo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2.5 L7.5,5 L0,7.5" fill="none" stroke="context-stroke" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><text x="16" y="76" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10.5" fill="#dda49a" letter-spacing="2">ANTES</text><g class="asm" style="animation-delay:0.1s"><rect x="70" y="50" width="130" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="135.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Empresa</text></g><text x="216" y="40" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10" fill="rgba(233,236,239,0.62)">préstamo del socio</text><line x1="200" y1="76" x2="232" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:0.3s"/><g class="asm" style="animation-delay:0.45s"><rect x="232" y="50" width="110" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="287.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Tú</text></g><line x1="342" y1="76" x2="374" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:0.6s"/><g class="asm" style="animation-delay:0.75s"><rect x="374" y="50" width="234" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1.2"/><text x="491.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#e6b3a9">Riesgo DIAN: renta + sanción</text></g><text x="16" y="176" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10.5" fill="#8fc4e6" letter-spacing="2">DESPUÉS</text><g class="asm" style="animation-delay:1.0s"><rect x="70" y="150" width="130" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="135.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Empresa</text></g><text x="216" y="140" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10" fill="rgba(233,236,239,0.62)">salario · dividendos</text><line x1="200" y1="176" x2="232" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:1.2s"/><g class="asm" style="animation-delay:1.35s"><rect x="232" y="150" width="110" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="287.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Tú</text></g><line x1="342" y1="176" x2="374" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:1.5s"/><g class="asm" style="animation-delay:1.65s"><rect x="374" y="150" width="234" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1.2"/><text x="491.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Formal · cierra el frente UGPP</text></g></svg></div>
+          <div class="deliv__viz reveal" aria-hidden="true"><svg viewBox="0 0 680 232" xmlns="http://www.w3.org/2000/svg"><defs><marker id="mo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2.5 L7.5,5 L0,7.5" fill="none" stroke="context-stroke" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><text x="8" y="76" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#dda49a" letter-spacing="1">ANTES</text><g class="asm" style="animation-delay:0.1s"><rect x="70" y="50" width="130" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="135.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Empresa</text></g><text x="216" y="40" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10" fill="rgba(233,236,239,0.62)">préstamo del socio</text><line x1="200" y1="76" x2="232" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:0.3s"/><g class="asm" style="animation-delay:0.45s"><rect x="232" y="50" width="110" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="287.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Tú</text></g><line x1="342" y1="76" x2="374" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:0.6s"/><g class="asm" style="animation-delay:0.75s"><rect x="374" y="50" width="234" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1.2"/><text x="491.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#e6b3a9">Riesgo DIAN: renta + sanción</text></g><text x="8" y="176" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#8fc4e6" letter-spacing="1">DESPUÉS</text><g class="asm" style="animation-delay:1.0s"><rect x="70" y="150" width="130" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="135.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Empresa</text></g><text x="216" y="140" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10" fill="rgba(233,236,239,0.62)">salario · dividendos</text><line x1="200" y1="176" x2="232" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:1.2s"/><g class="asm" style="animation-delay:1.35s"><rect x="232" y="150" width="110" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="287.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Tú</text></g><line x1="342" y1="176" x2="374" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:1.5s"/><g class="asm" style="animation-delay:1.65s"><rect x="374" y="150" width="234" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1.2"/><text x="491.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Formal · cierra el frente UGPP</text></g></svg></div>
 
           <p class="deliv__note">Ejemplo ilustrativo con el formato de la app. Tu plano se construye con tu caso.</p>
         </div>
@@ -1148,26 +1173,26 @@ section{padding-block:clamp(78px,9vw,128px)}
     <section class="method" id="metodo">
       <div class="wrap">
         <div class="section-h reveal">
-          <div class="chapter"><b>04</b> Cómo trabajamos contigo</div>
+          <div class="chapter"><b>03</b> Cómo trabajamos contigo</div>
           <h2>Una arquitecta patrimonial de tu lado, <i>no un asesor que vende una solución.</i></h2>
-          <p>No es una hora con un especialista para salir de una duda puntual. Es una arquitecta patrimonial que dirige tu caso de principio a fin: lee tu situación completa, convoca y alinea a los especialistas que se necesiten: tributarista, abogado, banca internacional— y te entrega decisiones, no tareas. Su posición es independiente: no vive de comisiones por venderte productos, de modo que su criterio responde solo a tu patrimonio.</p>
+          <p>No es una hora con un especialista para una duda puntual. Es una arquitecta patrimonial que dirige tu caso de principio a fin: lee tu situación completa, alinea a los especialistas que haga falta —tributarista, abogado, banca internacional— y te entrega decisiones, no tareas. Es independiente: no vive de comisiones, así que su criterio responde solo a tu patrimonio.</p>
         </div>
 
         <div class="method__grid">
           <article class="method__col reveal">
             <div class="method__n">i.</div>
             <h3 class="method__t">Independiente</h3>
-            <p class="method__d">Natalia dirige tu caso desde su criterio profesional. Cuando el diseño convoca productos que ella distribuye (pólizas, portafolios), lo declara abiertamente y la decisión de tomarlos siempre es tuya. Nunca te empujamos a un producto porque nos convenga; solo lo recomendamos cuando es la mejor herramienta para tu arquitectura.</p>
+            <p class="method__d">Natalia dirige tu caso desde su criterio profesional. Si el diseño incluye productos que ella distribuye (pólizas, portafolios), lo declara y la decisión es tuya. Solo los recomendamos cuando son la mejor herramienta para tu arquitectura.</p>
           </article>
           <article class="method__col reveal">
             <div class="method__n">ii.</div>
             <h3 class="method__t">Te acompaña y coordina a los especialistas</h3>
-            <p class="method__d">Tienes una sola interlocutora. Natalia convoca al tributarista, al abogado y a los aliados que tu caso requiera, integra sus criterios en una sola estrategia y te la presenta ya resuelta, tú no coordinas especialistas ni reconcilias respuestas dispersas.</p>
+            <p class="method__d">Tienes una sola interlocutora. Natalia convoca al tributarista, al abogado y a los aliados que tu caso requiera, integra sus criterios en una estrategia y te la presenta resuelta. Tú no coordinas especialistas ni reconcilias respuestas dispersas.</p>
           </article>
           <article class="method__col reveal">
             <div class="method__n">iii.</div>
             <h3 class="method__t">Varias opciones, sustentadas en costo-beneficio</h3>
-            <p class="method__d">No te entregamos una única respuesta cerrada. Te mostramos los caminos posibles, cada uno con su costo, su ahorro y su riesgo en números. La decisión es tuya; nuestro trabajo es que la tomes con toda la información sobre la mesa.</p>
+            <p class="method__d">No una única respuesta cerrada. Te mostramos los caminos posibles, cada uno con su costo, su ahorro y su riesgo en números. La decisión es tuya; nuestro trabajo es que la tomes con toda la información sobre la mesa.</p>
           </article>
         </div>
 
@@ -1179,7 +1204,7 @@ section{padding-block:clamp(78px,9vw,128px)}
     <section class="proof">
       <div class="wrap">
         <div class="proof__lead reveal">
-          <div class="chapter chapter--light"><b>05</b> Un caso real</div>
+          <div class="chapter chapter--light"><b>04</b> Un caso real</div>
           <h2>Cada peso en la estructura, <i>hasta 106 de vuelta.</i></h2>
           <p>Caso real anonimizado. Patrimonio de $8.000M, sin deuda, con activos en Colombia y en el exterior. Esto es lo que evita heredar con la arquitectura correcta — y lo que gana en el camino.</p>
         </div>
@@ -1216,10 +1241,11 @@ section{padding-block:clamp(78px,9vw,128px)}
         </div>
 
         <div class="pwins reveal">
-          <div class="pwin"><div class="pwin__v">$137M al año</div><div class="pwin__d">Con banca privada en EE. UU., la familia toma una línea de crédito contra su portafolio para tener liquidez; como el portafolio rinde más que el costo de la línea, la diferencia le queda a favor, sin vender nada.</div></div>
-          <div class="pwin"><div class="pwin__v">USD 500.000</div><div class="pwin__d">Asegurados con cobertura FDIC en el aliado bancario. Antes: $0.</div></div>
-          <div class="pwin"><div class="pwin__v">100%</div><div class="pwin__d">De la operación bursátil diagnosticada y reorganizada para tributar mejor.</div></div>
+          <div class="pwin"><div class="pwin__v" data-count="137" data-prefix="$" data-suffix="M al año">$137M al año</div><div class="pwin__d">Con banca privada en EE. UU., la familia toma una línea de crédito contra su portafolio para tener liquidez; como el portafolio rinde más que el costo de la línea, la diferencia le queda a favor, sin vender nada.</div></div>
+          <div class="pwin"><div class="pwin__v" data-count="500000" data-prefix="USD ">USD 500.000</div><div class="pwin__d">Asegurados con cobertura FDIC en el aliado bancario. Antes: $0.</div></div>
+          <div class="pwin"><div class="pwin__v" data-count="100" data-suffix="%">100%</div><div class="pwin__d">De la operación bursátil diagnosticada y reorganizada para tributar mejor.</div></div>
         </div>
+
       </div>
     </section>
 
@@ -1227,7 +1253,7 @@ section{padding-block:clamp(78px,9vw,128px)}
     <section class="plans" id="recorrido">
       <div class="wrap">
         <div class="section-h reveal">
-          <div class="chapter"><b>06</b> Planes y precios</div>
+          <div class="chapter"><b>05</b> Planes y precios</div>
           <h2>Empieza gratis. <i>Avanza cuando lo necesites.</i></h2>
           <p>Empiezas conociendo tu situación patrimonial completa en la app. Cuando quieras que te ayude a ordenar tus finanzas o a diseñar tu arquitectura patrimonial, escoges el plan que resuelve lo tuyo.</p>
         </div>
@@ -1304,7 +1330,7 @@ section{padding-block:clamp(78px,9vw,128px)}
               <p class="hserv__desc">Una hora con Natalia Jaramillo, arquitecta patrimonial y fundadora de ABBA, para leer tu situación patrimonial completa, identificar los tres puntos que hay que resolver primero y decidir juntos el camino que tiene más sentido para tu caso. Antes de la sesión completas tu perfil en la app (gratis) para que Natalia entre a la conversación conociendo tus datos.</p>
             </div>
             <div class="hserv__price">
-              <div class="hserv__amount">$150.000</div>
+              <div class="hserv__amount" data-count="150000" data-prefix="$">$150.000</div>
               <div class="hserv__unit">60 minutos · videollamada</div>
               <a href="#" class="btn btn--primary hserv__cta">Agendar mi Diagnóstico patrimonial con Natalia</a>
             </div>
@@ -1312,12 +1338,12 @@ section{padding-block:clamp(78px,9vw,128px)}
           <div class="hserv__cols">
             <div>
               <h4 class="hserv__h">Cómo funciona</h4>
-              <ol class="hserv__steps">
-                                <li>Reservas tu horario en el calendario, con al menos 24 horas de anticipación para que preparemos tu sesión con tus datos ya cargados.</li>
-                <li>Transfieres los $150.000 y envías el comprobante por WhatsApp en las siguientes 3 horas. Recibes confirmación de la cita, el enlace de videollamada y las instrucciones para completar tu perfil en la app.</li>
-                <li>Te registras en la app (gratis, 15 minutos) y completas tu perfil personal y fiscal, tu mapa patrimonial y una nota breve sobre lo que te trae a la sesión.</li>
-                <li>Los 60 minutos con Natalia: revisa contigo tu diagnóstico, se detiene en los temas que más te preocupan hoy y te recomienda el camino específico para tu caso.</li>
-                <li>24 horas después recibes un correo firmado por Natalia con la lectura de tu situación en un párrafo, los tres puntos priorizados que hay que resolver primero y el camino recomendado, con el precio de ese siguiente paso.</li>
+              <ol class="tl">
+                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 01 · Reservas</span><p class="tl__d">Reservas tu horario con al menos 24 horas de anticipación, para preparar tu sesión con tus datos ya cargados.</p></div></li>
+                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 02 · Pago y confirmación</span><p class="tl__d">Transfieres los $150.000 y envías el comprobante por WhatsApp dentro de las 3 horas siguientes. Recibes la confirmación, el enlace de videollamada y el acceso a la app.</p></div></li>
+                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 03 · Tu perfil</span><p class="tl__d">Te registras en la app (gratis, 15 min) y completas tu perfil y tu mapa patrimonial antes de la sesión.</p></div></li>
+                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 04 · La sesión</span><p class="tl__d">60 minutos con Natalia: revisa tu diagnóstico, se enfoca en lo que más te preocupa y te recomienda el camino para tu caso.</p></div></li>
+                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 05 · Tu plan por escrito</span><p class="tl__d">24 horas después recibes un correo firmado por Natalia con la lectura de tu situación, los tres puntos a resolver primero y el camino recomendado, con su precio.</p></div></li>
               </ol>
             </div>
             <div>
@@ -1328,7 +1354,7 @@ section{padding-block:clamp(78px,9vw,128px)}
           </div>
         </article>
 
-        <article class="hserv reveal">
+       <!-- <article class="hserv reveal">
           <div class="hserv__top">
             <div class="hserv__intro">
               <div class="hserv__k">Diseño con equipo</div>
@@ -1362,7 +1388,7 @@ section{padding-block:clamp(78px,9vw,128px)}
           </div>
         </article>
 
-        <article class="hserv reveal">
+         <article class="hserv reveal">
           <div class="hserv__top">
             <div class="hserv__intro">
               <div class="hserv__k">Ejecución operativa</div>
@@ -1384,7 +1410,7 @@ section{padding-block:clamp(78px,9vw,128px)}
             <div class="hserv__nobox-k">Coordinación con aliados</div>
             <p>Cada ejecución la realiza el profesional aliado que corresponde, abogado, notario o tributarista, y nosotros coordinamos su trabajo alrededor de tu arquitectura para que las piezas encajen entre sí. La responsabilidad profesional de cada trámite la firma el aliado que lo realiza. La responsabilidad del diseño integral la firma Natalia con el equipo ABBA.</p>
           </div>
-        </article>
+        </article> -->
 
         <div class="pay reveal">
           <div class="pay__k">Cómo confirmas tu sesión</div>
@@ -1402,7 +1428,7 @@ section{padding-block:clamp(78px,9vw,128px)}
     <section class="team" id="equipo">
       <div class="wrap">
         <div class="section-h reveal">
-          <div class="chapter"><b>07</b> Equipo</div>
+          <div class="chapter"><b>06</b> Equipo</div>
           <h2>No una consultora individual. <i>Un equipo integrado.</i></h2>
           <p>La decisión patrimonial acertada rara vez cabe en una sola disciplina. Nuestro equipo cubre las cuatro que casi siempre hacen falta.</p>
         </div>
@@ -1420,11 +1446,11 @@ section{padding-block:clamp(78px,9vw,128px)}
     <section class="tst">
       <div class="wrap">
         <div class="section-h reveal">
-          <div class="chapter"><b>08</b> Voces de clientes</div>
+          <div class="chapter"><b>07</b> Voces de clientes</div>
           <h2>Lo que dicen quienes ya lo vivieron.</h2>
         </div>
         <div class="tst__grid">
-          <article class="tst__card reveal"><p class="tst__q">Pensé que iba a ser más demorado. Me pareció súper claro, didáctico, como se lo presentas a alguien que no sabe.</p><div class="tst__cite"><strong>Familia con patrimonio de $8.200 M</strong>Diversificado entre bolsa internacional y finca raíz</div></article>
+          <article class="tst__card reveal"><p class="tst__q">Llevábamos años con el “ya lo organizamos después”. En una sola sesión Natalia nos puso los números enfrente: heredar como estábamos costaba casi $4.000 millones, y el estate tax de Estados Unidos se llevaba medio millón de dólares más. Hoy esa exposición es cero, tenemos liquidez sin vender un solo activo y mi familia por fin sabe qué hay, dónde está y qué hacer si yo falto. No nos vendió un producto: nos devolvió la tranquilidad.</p><div class="tst__cite"><strong>Familia con patrimonio de $8.200 M</strong>Diversificado entre bolsa internacional y finca raíz</div></article>
           <article class="tst__card reveal"><p class="tst__q">Uno realmente esto no lo sabe… va comprando cositas, va adquiriendo cosas, pero llega un momento en que uno dice: hay que ordenar la casa. Que le digan «estas son las propuestas A, B, C, D, caminos, escoja usted» es válido y es superútil, la verdad.</p><div class="tst__cite"><strong>Profesional con $830 M</strong>Inversión en EE. UU. y participaciones empresariales</div></article>
           <article class="tst__card reveal"><p class="tst__q">Tenía buenos asesores, pero cada uno por su lado. Lo que me faltaba era alguien que uniera todas las piezas en una sola estrategia.</p><div class="tst__cite"><strong>Empresario · patrimonio consolidado</strong>Primera sesión · Jun 2026</div></article>
         </div>
@@ -1435,7 +1461,7 @@ section{padding-block:clamp(78px,9vw,128px)}
     <section class="faq" id="faq">
       <div class="wrap">
         <div class="section-h reveal">
-          <div class="chapter"><b>09</b> Preguntas frecuentes</div>
+          <div class="chapter"><b>08</b> Preguntas frecuentes</div>
           <h2>Lo que suelen preguntar antes de empezar.</h2>
         </div>
         <div class="faq__list">
@@ -1492,8 +1518,8 @@ section{padding-block:clamp(78px,9vw,128px)}
         <p class="foot__desc">Diseño, coordinación y ejecución de arquitectura patrimonial para personas con patrimonio en construcción o consolidado.</p>
       </div>
       <div class="foot__col"><h4>Recorrido</h4><ul><li><a href="#diagnostico">Diagnóstico</a></li><li><a href="#entregable">Entregable</a></li><li><a href="#metodo">Método</a></li><li><a href="#recorrido">Recorrido</a></li><li><a href="#precios">Precios</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-      <div class="foot__col"><h4>Contacto</h4><ul><li><a href="mailto:natalia.jaramillo@abbapatrimonial.com">natalia.jaramillo@abbapatrimonial.com</a></li><li><a href="https://wa.me/573016392648" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/abbaconsultor/" target="_blank" rel="noopener">Instagram</a></li>
-      <div class="foot__col"><h4>Legal</h4><ul><li><a href="/aviso-de-privacidad/">Aviso de privacidad</a></li><li><a href="/terminos/">Términos y condiciones</a></li></ul></div>
+      <div class="foot__col"><h4>Contacto</h4><ul><li><a href="mailto:natalia.jaramillo@abbapatrimonial.com">natalia.jaramillo@abbapatrimonial.com</a></li><li><a href="https://wa.me/573016392648" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/abbaconsultor/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+      <div class="foot__col"><h4>Legal</h4><ul><li><a href="aviso-de-privacidad.html">Aviso de privacidad</a></li><li><a href="terminos.html">Términos y condiciones</a></li></ul></div>
     </div>
     <div class="foot__bottom">
       <span>© 2026 ABBA Patrimonial. Todos los derechos reservados.</span>
@@ -1531,10 +1557,18 @@ section{padding-block:clamp(78px,9vw,128px)}
     // Arquetipos
     const tabs = document.querySelectorAll('.arch__tab');
     const bodies = document.querySelectorAll('.arch__body');
+    const archPanel = document.querySelector('.arch__panel');
+    const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     tabs.forEach(tab => tab.addEventListener('click', () => {
       const t = tab.dataset.arch;
+      if (archPanel) archPanel.classList.add('is-chosen');
       tabs.forEach(x => x.classList.toggle('is-active', x === tab));
       bodies.forEach(b => b.classList.toggle('is-active', b.dataset.arch === t));
+      const active = document.querySelector('.arch__body.is-active');
+      if (active) {
+        const y = active.getBoundingClientRect().top + window.scrollY - 96;
+        window.scrollTo({top: y, behavior: prefersReduce ? 'auto' : 'smooth'});
+      }
     }));
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
