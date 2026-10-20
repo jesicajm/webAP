@@ -95,7 +95,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 ::selection{background:var(--navy);color:var(--paper-2)}
 
 /* Grano de papel + retícula técnica de fondo (fijos, sutiles) */
-.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.55;mix-blend-mode:multiply}
+.grain{position:fixed;inset:0;width:100vw;height:100vh;z-index:1;pointer-events:none;opacity:.55;mix-blend-mode:multiply}
 .gridfield{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:
     linear-gradient(to right, rgba(19,32,56,.035) 1px, transparent 1px),
@@ -171,7 +171,7 @@ section{padding-block:clamp(78px,9vw,128px)}
 .nav__wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gutter);height:var(--nav-h);
   display:flex;align-items:center;justify-content:space-between;gap:28px}
 .nav__logo{display:flex;align-items:center;height:100%}
-.brandmark{height:30px;width:auto;display:block}
+.brandmark{height:38px;width:auto;display:block}
 .nav__links{display:flex;gap:30px;margin-left:auto;margin-right:22px}
 .nav__links a{font-size:.92rem;color:var(--ink-2);position:relative;padding:6px 0;transition:color .2s}
 .nav__links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--navy);
@@ -845,7 +845,7 @@ section{padding-block:clamp(78px,9vw,128px)}
 .arch__lead{color:#f4f6f8}
 .arch__desc{color:rgba(233,236,239,.78)}
 .arch__desc strong{color:#f4f6f8}
-.arch__diseno h4{color:rgba(233,236,239,.55)}
+.arch__diseno h4{color:#8fb4d6}
 .arch__diseno li{color:#eef1f4}
 .arch__step{border-top-color:rgba(255,255,255,.14)}
 .arch__step-k{color:#8fb4d6}
@@ -951,6 +951,46 @@ section{padding-block:clamp(78px,9vw,128px)}
 
 /* Esquinas de botones más suaves y elegantes */
 .btn,.plan__cta,.door__cta,.path__cta{border-radius:9px}
+
+/* ============ Lo que recibes: sección oscura + acordeón ============ */
+.deliv{background:linear-gradient(180deg,#132038,#0d1726);color:var(--paper-2);border-block:1px solid rgba(255,255,255,.1)}
+.deliv .chapter{color:rgba(233,236,239,.6)}
+.deliv .chapter b{color:var(--brass-2)}
+.deliv .section-h h2{color:#f4f6f8}
+.deliv .section-h p{color:rgba(233,236,239,.78)}
+.deliv__leadnote{border-top-color:rgba(255,255,255,.14);color:rgba(233,236,239,.78)}
+.deliv__sample{background:transparent;padding:0;border-radius:0}
+.deliv__sample-h h3{color:#f4f6f8}
+.deliv__note{color:rgba(233,236,239,.6)}
+.viz-flow{color:rgba(233,236,239,.5)}
+.deliv__viz{background:rgba(255,255,255,.03)}
+.deliv__items{display:grid;grid-template-columns:1fr;gap:12px;margin-top:30px;border-top:0}
+.deliv__item{display:block;padding:0;gap:0;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);transition:border-color .3s var(--ease),background .3s var(--ease)}
+.deliv__item[open]{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.2)}
+.deliv__item summary{list-style:none;cursor:pointer;display:flex;align-items:flex-start;gap:16px;padding:18px 22px}
+.deliv__item summary::-webkit-details-marker{display:none}
+.deliv__item summary:hover .deliv__item-t{color:#fff}
+.deliv__item-n{font-family:var(--mono);font-size:.74rem;color:var(--brass-2);letter-spacing:.04em;flex:0 0 auto;margin-top:5px}
+.deliv__item-t{font-family:var(--serif);font-size:clamp(1rem,1.5vw,1.12rem);color:#f4f6f8;flex:1;line-height:1.3;transition:color .2s}
+.deliv__item-ar{flex:0 0 auto;margin-left:auto;margin-top:6px;width:9px;height:9px;border-right:1.5px solid var(--brass-2);border-bottom:1.5px solid var(--brass-2);transform:rotate(45deg);transition:transform .3s var(--ease)}
+.deliv__item[open] .deliv__item-ar{transform:rotate(-135deg)}
+.deliv__item-d{padding:2px 22px 20px 56px;font-size:.92rem;line-height:1.6;color:rgba(233,236,239,.72)}
+@media(max-width:560px){.deliv__item-d{padding-left:22px}}
+
+/* Tarjeta única (Diagnóstico con Natalia) centrada */
+.plans__grid--solo{grid-template-columns:minmax(0,440px);justify-content:center}
+/* Apertura/cierre suave de los acordeones (details) */
+html{interpolate-size:allow-keywords}
+.deliv__item::details-content,
+.faq__item::details-content{
+  block-size:0;overflow:hidden;opacity:0;
+  transition:block-size .42s var(--ease), opacity .3s var(--ease), content-visibility .42s var(--ease) allow-discrete;
+}
+.deliv__item[open]::details-content,
+.faq__item[open]::details-content{block-size:auto;opacity:1}
+@media(prefers-reduced-motion:reduce){
+  .deliv__item::details-content,.faq__item::details-content{transition:none}
+}
   </style>
 </head>
 <body>
@@ -986,7 +1026,7 @@ section{padding-block:clamp(78px,9vw,128px)}
           <p class="hero__sub">No vendemos horas de asesoría. Diseñamos la estructura fiscal, legal, financiera y sucesoral que ordena tu patrimonio y protege lo que has construido, con un plano claro, no con improvisación.</p>
           <div class="hero__ctas">
             <a href="#empezar" class="btn btn--primary btn--lg">Agendar mi Diagnóstico patrimonial con Natalia</a>
-            <a href="/app/" class="btn btn--ghost btn--lg">Empezar diagnóstico gratuito</a>
+            <a href="/app/" class="btn btn--ghost btn--lg">Empezar diagnóstico sin costo</a>
           </div>
         </div>
 
@@ -1087,7 +1127,7 @@ section{padding-block:clamp(78px,9vw,128px)}
                 <h4>Qué diseñamos para ti</h4>
                 <ul><li>El análisis, con cifras, de si te conviene separar tu operación en sociedad, y cuál</li><li>La estructura que aísla tu patrimonio personal de los riesgos del negocio</li><li>La sociedad patrimonial que consolida y ordena tus bienes familiares</li><li>El plan para que la empresa pase a tus herederos sin frenar la operación</li></ul>
               </div>
-              <div class="arch__step"><span class="arch__step-k">Tu primer paso</span><p>Comparación con cifras de si te conviene reorganizar tu operación actual en sociedad patrimonial, y bajo qué régimen, con recomendación fundamentada.</p></div>
+              <div class="arch__step"><span class="arch__step-k">Tu primer paso</span><p>Comparación con cifras de si te conviene reorganizar tu operación actual en sociedad patrimonial u holding, y bajo qué régimen, con recomendación fundamentada.</p></div>
             </div>
             <div class="arch__body" data-arch="B">
               <p class="arch__lead">Ganas bien y ahorras. Pero pagas más impuestos de los que legalmente deberías, porque nadie te ha diseñado una estructura fiscal completa.</p>
@@ -1138,152 +1178,19 @@ section{padding-block:clamp(78px,9vw,128px)}
       </div>
     </section>
 
-    <!-- ENTREGABLE -->
-    <section class="deliv" id="entregable">
-      <div class="wrap">
-        <div class="deliv__top">
-          <div class="reveal">
-            <div class="section-h">
-              <div class="chapter"><b>02</b> Lo que recibes</div>
-              <h2>Qué está en riesgo, cuánto te cuesta y <i>quién lo resuelve.</i></h2>
-              <p>No es un informe para archivar: es el mapa de decisiones de tu patrimonio. Ves qué tienes hoy, qué está expuesto y cuánto te costaría en pesos, la arquitectura que lo ordena y un plan por fases donde cada acción indica el profesional que la haría, tributarista, abogado o consultor patrimonial y su horizonte. Sales sabiendo qué resolver primero, con quién y a qué costo. Ejecutar el plan es un paso aparte: lo haces por tu cuenta o con nuestro equipo, y se cotiza según lo que decidas.</p>
-            </div>
-            <ol class="deliv__items">
-              <li class="deliv__item"><span class="deliv__item-n">01</span><div><div class="deliv__item-t">Estado actual del patrimonio</div><div class="deliv__item-d">Composición por liquidez, categoría de activo y geografía. Cierre anual del flujo de caja.</div></div></li>
-              <li class="deliv__item"><span class="deliv__item-n">02</span><div><div class="deliv__item-t">Diagnóstico por dimensión</div><div class="deliv__item-d">Financiera, fiscal, legal y sucesoral. Cada una con su situación documentada y sus vulnerabilidades.</div></div></li>
-              <li class="deliv__item"><span class="deliv__item-n">03</span><div><div class="deliv__item-t">Estructura legal, hoy y propuesta</div><div class="deliv__item-d">Cómo está organizado tu patrimonio hoy y cómo quedaría bajo la arquitectura recomendada, en un plano comparativo.</div></div></li>
-              <li class="deliv__item"><span class="deliv__item-n">04</span><div><div class="deliv__item-t">Estructura sucesoral con cifras</div><div class="deliv__item-d">Costo real del proceso hoy vs. con Sociedad Patrimonial, en Colombia y en el exterior.</div></div></li>
-              <li class="deliv__item"><span class="deliv__item-n">05</span><div><div class="deliv__item-t">Mapa consolidado de vulnerabilidades</div><div class="deliv__item-d">Todos tus riesgos en un solo tablero, ordenados por severidad: crítica, alta y media.</div></div></li>
-              <li class="deliv__item"><span class="deliv__item-n">06</span><div><div class="deliv__item-t">Plan de acción por fases</div><div class="deliv__item-d">Acciones concretas, el profesional que haría cada una y su horizonte de tiempo. Ejecutarlas se cotiza aparte.</div></div></li>
-              <li class="deliv__item"><span class="deliv__item-n">07</span><div><div class="deliv__item-t">Costos consolidados</div><div class="deliv__item-d">Cuánto cuesta implementar la arquitectura, inversión inicial y gasto anual frente al ahorro que genera.</div></div></li>
-              <li class="deliv__item"><span class="deliv__item-n">08</span><div><div class="deliv__item-t">Ruta de ejecución trimestral</div><div class="deliv__item-d">El orden trimestre a trimestre en que se ejecuta cada paso, con la fecha de cierre de cada etapa.</div></div></li>
-            </ol>
-            <p class="deliv__leadnote">Cuando tu caso incluye documentos que requieren interpretación específica, tu declaración de renta, tus extractos bancarios, los certificados de tus inversiones y las carátulas de tus pólizas, y tus reportes del bróker en el exterior cuando aplique, Natalia y el equipo trabajan tu Diseño a la medida sobre esos documentos. Ese es el Diseño con equipo, con su propia cotización según el caso.</p>
-          </div>
-        </div>
-
-        <!-- Muestra: reorganización (visual) -->
-        <div class="deliv__sample">
-          <div class="deliv__sample-h reveal">
-            <div class="chapter">Muestra · Tu estructura, reorganizada</div>
-            <h3>De todo a nombre de una persona a <i>una sola estructura.</i></h3>
-          </div>
-
-          <div class="deliv__viz reveal" aria-hidden="true">
-            <div class="viz-cap">Hoy · todo a nombre de una sola persona</div>
-            <svg viewBox="0 0 680 372" xmlns="http://www.w3.org/2000/svg"><g class="asm" style="animation-delay:0.1s"><rect x="190" y="36" width="300" height="50" rx="10" fill="rgba(255,255,255,0.08)" stroke="#ffffff" stroke-width="1.4"/><text x="340.0" y="54" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Tú · la persona</text><text x="340.0" y="71" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">todo a tu nombre</text></g><line x1="340" y1="86" x2="340" y2="104" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.3s"/><line x1="180" y1="104" x2="500" y2="104" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.35s"/><line x1="180" y1="104" x2="180" y2="118" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.4s"/><line x1="500" y1="104" x2="500" y2="118" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.4s"/><g class="asm" style="animation-delay:0.5s"><rect x="70" y="118" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="180.0" y="136" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">A tu nombre</text><text x="180.0" y="153" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">sin sociedad</text></g><g class="asm" style="animation-delay:0.5s"><rect x="390" y="118" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="500.0" y="136" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Sociedad comercial</text><text x="500.0" y="153" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">SAS · Ltda · S.A.</text></g><line x1="180" y1="168" x2="180" y2="185" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.65s"/><line x1="500" y1="168" x2="500" y2="185" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.65s"/><g class="asm" style="animation-delay:0.8s"><rect x="70" y="185" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="180.0" y="203" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Financiero</text><text x="180.0" y="220" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">3 activos · $1.337M</text></g><line x1="180" y1="235" x2="180" y2="247" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.85s"/><g class="asm" style="animation-delay:0.95s"><rect x="70" y="247" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="180.0" y="265" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Uso personal</text><text x="180.0" y="282" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">1 activo · $15M</text></g><g class="asm" style="animation-delay:0.8s"><rect x="390" y="185" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="500.0" y="203" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Empresarial</text><text x="500.0" y="220" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">1 activo · $3.500M</text></g><line x1="500" y1="235" x2="500" y2="247" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.85s"/><g class="asm" style="animation-delay:0.95s"><rect x="390" y="247" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="500.0" y="265" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Inmuebles</text><text x="500.0" y="282" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">2 activos · $2.900M</text></g><line x1="500" y1="297" x2="500" y2="309" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:1.05s"/><g class="asm" style="animation-delay:1.15s"><rect x="390" y="309" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="500.0" y="327" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Uso personal</text><text x="500.0" y="344" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">2 activos · $370M</text></g></svg>
-          </div>
-          <div class="viz-flow">se reorganiza ↓</div>
-          <div class="deliv__viz reveal" aria-hidden="true">
-            <div class="viz-cap viz-cap--good">Después · consolidado bajo una sociedad</div>
-            <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg"><g class="asm" style="animation-delay:0.1s"><rect x="200" y="36" width="280" height="50" rx="10" fill="rgba(255,255,255,0.08)" stroke="#ffffff" stroke-width="1.4"/><text x="340.0" y="54" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Sociedad Patrimonial</text><text x="340.0" y="71" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">holding</text></g><line x1="340" y1="86" x2="340" y2="104" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.3s"/><line x1="130" y1="104" x2="550" y2="104" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.35s"/><line x1="130" y1="104" x2="130" y2="140" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.45s"/><line x1="340" y1="104" x2="340" y2="140" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.45s"/><line x1="550" y1="104" x2="550" y2="140" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.45s"/><g class="asm" style="animation-delay:0.6s"><rect x="38" y="140" width="184" height="56" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="130.0" y="158" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Empresarial</text><text x="130.0" y="175" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">1 empresa operativa</text></g><g class="asm" style="animation-delay:0.7s"><rect x="248" y="140" width="184" height="56" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="340.0" y="158" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Inmuebles</text><text x="340.0" y="175" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">aportados a la sociedad</text></g><g class="asm" style="animation-delay:0.8s"><rect x="458" y="140" width="184" height="56" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="550.0" y="158" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Financiero</text><text x="550.0" y="175" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">portafolio + cuentas</text></g></svg>
-          </div>
-
-          <div class="deliv__sample-h reveal" style="margin-top:clamp(48px,6vw,72px)">
-            <div class="chapter"><b>·</b> Cómo entra tu dinero</div>
-            <h3>Menos pasos y menos comisiones, <i>en días.</i></h3>
-          </div>
-          <div class="deliv__viz reveal" aria-hidden="true"><svg viewBox="0 0 680 234" xmlns="http://www.w3.org/2000/svg"><defs><marker id="mi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2.5 L7.5,5 L0,7.5" fill="none" stroke="context-stroke" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><text x="8" y="76" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#dda49a" letter-spacing="1">ANTES</text><g class="asm" style="animation-delay:0.1s"><rect x="72" y="50" width="120" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="132.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">US$200.000</text></g><line x1="192" y1="76" x2="226" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:0.25s"/><g class="asm" style="animation-delay:0.4s"><rect x="226" y="48" width="214" height="56" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1.2"/><text x="333.0" y="66" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Cadena de apps de dólar</text><text x="333.0" y="83" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">≈US$1.600 · ~69 giros</text></g><line x1="440" y1="76" x2="474" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:0.55s"/><g class="asm" style="animation-delay:0.7s"><rect x="474" y="50" width="156" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="552.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Llega ~US$198.400</text></g><text x="8" y="176" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#8fc4e6" letter-spacing="1">DESPUÉS</text><g class="asm" style="animation-delay:0.95s"><rect x="72" y="150" width="120" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="132.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">US$200.000</text></g><line x1="192" y1="176" x2="226" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:1.1s"/><g class="asm" style="animation-delay:1.25s"><rect x="226" y="148" width="214" height="56" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1.2"/><text x="333.0" y="166" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Banco aliado · 1 wire</text><text x="333.0" y="183" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">en días · con FDIC</text></g><line x1="440" y1="176" x2="474" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:1.4s"/><g class="asm" style="animation-delay:1.55s"><rect x="474" y="150" width="156" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="552.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Llega US$200.000</text></g></svg></div>
-          <p class="deliv__note">Con la cadena de apps de dólar, mover US$200.000 deja ~US$1.600 en comisiones y decenas de transferencias (con topes por giro) que toman semanas. Con el aliado bancario internacional, un solo wire y respaldo del seguro bancario federal (FDIC).</p>
-
-          <div class="deliv__sample-h reveal" style="margin-top:clamp(48px,6vw,72px)">
-            <div class="chapter"><b>·</b> Cómo sale el dinero de tu empresa</div>
-            <h3>De un préstamo con riesgo a <i>una salida formal.</i></h3>
-          </div>
-          <div class="deliv__viz reveal" aria-hidden="true"><svg viewBox="0 0 680 232" xmlns="http://www.w3.org/2000/svg"><defs><marker id="mo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2.5 L7.5,5 L0,7.5" fill="none" stroke="context-stroke" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><text x="8" y="76" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#dda49a" letter-spacing="1">ANTES</text><g class="asm" style="animation-delay:0.1s"><rect x="70" y="50" width="130" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="135.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Empresa</text></g><text x="216" y="40" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10" fill="rgba(233,236,239,0.62)">préstamo del socio</text><line x1="200" y1="76" x2="232" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:0.3s"/><g class="asm" style="animation-delay:0.45s"><rect x="232" y="50" width="110" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="287.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Tú</text></g><line x1="342" y1="76" x2="374" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:0.6s"/><g class="asm" style="animation-delay:0.75s"><rect x="374" y="50" width="234" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1.2"/><text x="491.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#e6b3a9">Riesgo DIAN: renta + sanción</text></g><text x="8" y="176" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#8fc4e6" letter-spacing="1">DESPUÉS</text><g class="asm" style="animation-delay:1.0s"><rect x="70" y="150" width="130" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="135.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Empresa</text></g><text x="216" y="140" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10" fill="rgba(233,236,239,0.62)">salario · dividendos</text><line x1="200" y1="176" x2="232" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:1.2s"/><g class="asm" style="animation-delay:1.35s"><rect x="232" y="150" width="110" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="287.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Tú</text></g><line x1="342" y1="176" x2="374" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:1.5s"/><g class="asm" style="animation-delay:1.65s"><rect x="374" y="150" width="234" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1.2"/><text x="491.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Formal · cierra el frente UGPP</text></g></svg></div>
-
-          <p class="deliv__note">Ejemplo ilustrativo con el formato de la app. Tu plano se construye con tu caso.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CÓMO TRABAJAMOS -->
-    <section class="method" id="metodo">
-      <div class="wrap">
-        <div class="section-h reveal">
-          <div class="chapter"><b>03</b> Cómo trabajamos contigo</div>
-          <h2>Una arquitecta patrimonial de tu lado, <i>no un asesor que vende una solución.</i></h2>
-          <p>No es una hora con un especialista para una duda puntual. Es una arquitecta patrimonial que dirige tu caso de principio a fin: lee tu situación completa, alinea a los especialistas que haga falta (tributarista, abogado, banca internacional) y te entrega decisiones, no tareas. Es independiente: no vive de comisiones, así que su criterio responde solo a tu patrimonio.</p>
-        </div>
-
-        <div class="method__grid">
-          <article class="method__col reveal">
-            <div class="method__n">i.</div>
-            <h3 class="method__t">Independiente</h3>
-            <p class="method__d">Natalia dirige tu caso desde su criterio profesional. Si el diseño incluye soluciones con aliados (pólizas, portafolios), lo declara y la decisión es tuya. Solo los recomendamos cuando son la mejor herramienta para tu arquitectura.</p>
-          </article>
-          <article class="method__col reveal">
-            <div class="method__n">ii.</div>
-            <h3 class="method__t">Te acompaña y coordina a los especialistas</h3>
-            <p class="method__d">Tienes una sola interlocutora. Natalia convoca al tributarista, al abogado y a los aliados que tu caso requiera, integra sus criterios en una estrategia y te la presenta resuelta. Tú no coordinas especialistas ni reconcilias respuestas dispersas.</p>
-          </article>
-          <article class="method__col reveal">
-            <div class="method__n">iii.</div>
-            <h3 class="method__t">Varias opciones, sustentadas en costo-beneficio</h3>
-            <p class="method__d">No una única respuesta cerrada. Te mostramos los caminos posibles, cada uno con su costo, su ahorro y su riesgo en números. La decisión es tuya; nuestro trabajo es que la tomes con toda la información sobre la mesa.</p>
-          </article>
-        </div>
-
-        <p class="method__foot reveal">Así, cuando decides constituir una sociedad, diversificar en moneda fuerte o resolver tu sucesión, no lo haces por corazonada ni porque alguien te lo vendió: lo haces porque viste los números y elegiste la mejor opción para tu familia.</p>
-      </div>
-    </section>
-
-    <!-- PROOF -->
-    <section class="proof">
-      <div class="wrap">
-        <div class="proof__lead reveal">
-          <div class="chapter chapter--light"><b>04</b> Un caso real</div>
-          <h2>Cada peso en la estructura, <i>hasta 106 de vuelta.</i></h2>
-          <p>Caso real anonimizado. Patrimonio de $8.000M, sin deuda, con activos en Colombia y en el exterior. Esto es lo que evita heredar con la arquitectura correcta y lo que gana en el camino.</p>
-        </div>
-
-        <div class="pmetrics reveal">
-          <div class="pmetric"><div class="pmetric__n">USD 532.800 → $0</div><div class="pmetric__l">Estate tax de EE. UU. eliminado por completo</div></div>
-          <div class="pmetric"><div class="pmetric__n">$3.400–3.970M</div><div class="pmetric__l">Exposición sucesoral total evitada</div></div>
-          <div class="pmetric"><div class="pmetric__n">0,47%</div><div class="pmetric__l">Costo de la estructura el primer año, sobre el patrimonio</div></div>
-          <div class="pmetric"><div class="pmetric__n">90–106×</div><div class="pmetric__l">Retorno sobre el costo de la estructura</div></div>
-        </div>
-
-        <div class="proof__grid">
-          <article class="pcard reveal">
-            <div class="pcard__k">Sin la estructura</div>
-            <h3 class="pcard__t">Lo que costaría heredar hoy</h3>
-            <div class="pcard__rows">
-              <div class="prow"><span class="prow__k">Estate tax EE. UU. (NRA) sobre el portafolio</span><span class="prow__v">USD 532.800</span></div>
-              <div class="prow"><span class="prow__k">Costos de sucesión en Colombia</span><span class="prow__v">$1.741–2.301M</span></div>
-              <div class="prow"><span class="prow__k">Utilidades de bolsa tributando como renta ordinaria</span><span class="prow__v">Al 100%</span></div>
-              <div class="prow prow--total"><span class="prow__k">Exposición sucesoral total</span><span class="prow__v">$3.400–3.970M</span></div>
-            </div>
-          </article>
-
-          <article class="pcard pcard--good reveal">
-            <div class="pcard__k">Con la arquitectura</div>
-            <h3 class="pcard__t">Herencia como transferencia de acciones</h3>
-            <div class="pcard__rows">
-              <div class="prow"><span class="prow__k">Estate tax EE. UU. (acciones no US situs)</span><span class="prow__v">$0</span></div>
-              <div class="prow"><span class="prow__k">Costos de sucesión en Colombia</span><span class="prow__v">Minimizados</span></div>
-              <div class="prow"><span class="prow__k">Costo de la estructura · primer año</span><span class="prow__v">0,47%</span></div>
-              <div class="prow prow--total"><span class="prow__k">Retorno sobre lo evitado</span><span class="prow__v">90–106×</span></div>
-            </div>
-          </article>
-        </div>
-
-        <div class="pwins reveal">
-          <div class="pwin"><div class="pwin__v" data-count="137" data-prefix="$" data-suffix="M al año">$137M al año</div><div class="pwin__d">Con banca privada en EE. UU., la familia toma una línea de crédito contra su portafolio para tener liquidez; como el portafolio rinde más que el costo de la línea, la diferencia le queda a favor, sin vender nada.</div></div>
-          <div class="pwin"><div class="pwin__v" data-count="500000" data-prefix="USD ">USD 500.000</div><div class="pwin__d">Asegurados con cobertura FDIC en el aliado bancario. Antes: $0.</div></div>
-          <div class="pwin"><div class="pwin__v" data-count="100" data-suffix="%">100%</div><div class="pwin__d">De la operación bursátil diagnosticada y reorganizada para tributar mejor.</div></div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- PLANES Y PRECIOS -->
     <section class="plans" id="recorrido">
       <div class="wrap">
         <div class="section-h reveal">
-          <div class="chapter"><b>05</b> Planes y precios</div>
+          <div class="chapter"><b>02</b> Planes y precios</div>
           <h2>Empieza sin costo. <i>Avanza cuando lo necesites.</i></h2>
-          <p>Empiezas conociendo tu situación patrimonial completa en la app. Cuando quieras que te ayude a ordenar tus finanzas o a diseñar tu arquitectura patrimonial, escoges el plan que resuelve lo tuyo.</p>
+          <p>Hay dos formas de avanzar: <strong>Con la app</strong>, que te ordena y diseña tu arquitectura con los datos que cargas, y <strong>el acompañamiento humano</strong>, que empieza con una hora con Natalia cuando quieres que te orienten sobre cómo empezar según tus particularidades. Empiezas sin costo y subes de plan solo cuando lo necesites.</p>
+        </div>
+
+        <div class="section-h reveal" style="margin-top:clamp(40px,5vw,64px)">
+          <div class="chapter"><b>·</b> Con la app</div>
+          <h2>Ordena y diseña tu patrimonio <i>a tu ritmo.</i></h2>
+          <p>Empiezas sin costo con tu diagnóstico y subes de plan solo cuando lo necesites. Tú cargas los datos y la app arma tu arquitectura patrimonial.</p>
         </div>
 
         <div id="precios"></div>
@@ -1306,10 +1213,10 @@ section{padding-block:clamp(78px,9vw,128px)}
           </article>
 
           <article class="plan">
-            <div class="plan__name">Diagnóstico financiero</div>
+            <div class="plan__name">Organizador financiero</div>
             <div class="plan__price">$260.000 <span>COP / año</span></div>
             <p class="plan__promise">Recuperarás el control de tu dinero: sabrás dónde se va, cómo salir de deudas y cuánto puedes ahorrar de verdad.</p>
-            <div class="plan__addlbl">Suma sobre el plan sin costo</div>
+            <div class="plan__addlbl">Suma sobre el plan Sin costo</div>
             <ul class="plan__feats">
               <li>Registro completo de ingresos y gastos</li>
               <li>Análisis de tus deudas y capacidad de endeudamiento</li>
@@ -1329,7 +1236,7 @@ section{padding-block:clamp(78px,9vw,128px)}
             <div class="plan__name">Asesor patrimonial</div>
             <div class="plan__price">$480.000 <span>COP / año</span></div>
             <p class="plan__promise">Sabrás qué hacer hoy para proteger tu patrimonio, pagar menos impuestos y dejar todo en orden para tu familia.</p>
-            <div class="plan__addlbl">Suma sobre el plan Diagnóstico financiero</div>
+            <div class="plan__addlbl">Suma sobre el plan Organizador financiero</div>
             <ul class="plan__feats">
               <li>Tu arquitectura patrimonial diseñada en tres escenarios ordenados por relación costo-beneficio, qué instrumentos usar, en qué orden, cuánto invertir y qué esperar a cinco años</li>
               <li>Diagnóstico legal detallado con hallazgos, norma, costo y palancas para resolver cada uno</li>
@@ -1346,41 +1253,27 @@ section{padding-block:clamp(78px,9vw,128px)}
         <div class="section-h reveal" style="margin-top:clamp(64px,8vw,108px)">
           <div class="chapter"><b>·</b> Con acompañamiento humano</div>
           <h2>Cuando tu caso pide <i>una mano experta.</i></h2>
-          <p>La app te ordena y te muestra la arquitectura recomendada. Cuando quieres que un profesional lea tu caso real, empiezas por una hora con Natalia: ella define contigo el camino y su precio.</p>
+          <p>La app te ordena y te muestra la arquitectura recomendada. Cuando quieres que un profesional revise tu situación y te guíe sobre por dónde empezar según tus particularidades, empiezas por una hora con Natalia: ella define contigo el camino y su precio.</p>
         </div>
 
         <div id="empezar"></div>
-        <article class="hserv reveal">
-          <div class="hserv__top">
-            <div class="hserv__intro">
-              <div class="hserv__k">Diagnóstico patrimonial con Natalia</div>
-              <h3 class="hserv__t">Una hora que ordena tu cabeza, y te deja un plan por escrito.</h3>
-              <p class="hserv__desc">Una hora con Natalia Jaramillo, arquitecta patrimonial y fundadora de ABBA, para leer tu situación patrimonial completa, identificar los tres puntos que hay que resolver primero y decidir juntos el camino que tiene más sentido para tu caso. Antes de la sesión completas tu perfil en la app (sin costo) para que Natalia entre a la conversación teniendo más información sobre tu caso..</p>
-            </div>
-            <div class="hserv__price">
-              <div class="hserv__amount">$150.000</div>
-              <div class="hserv__unit">60 minutos · videollamada</div>
-              <a href="https://calendly.com/abba-asesoria/diagnostico-natalia" target="_blank" rel="noopener" class="btn btn--primary hserv__cta">Agendar mi Diagnóstico patrimonial con Natalia</a>
-            </div>
-          </div>
-          <div class="hserv__cols">
-            <div>
-              <h4 class="hserv__h">Cómo funciona</h4>
-              <ol class="tl">
-                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 01 · Reservas</span><p class="tl__d">Reservas tu horario con al menos 24 horas de anticipación, para preparar tu sesión con tus datos ya cargados.</p></div></li>
-                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 02 · Pago y confirmación</span><p class="tl__d">Transfieres los $150.000 y envías el comprobante por WhatsApp dentro de las 3 horas siguientes. Recibes la confirmación, el enlace de videollamada y el acceso a la app.</p></div></li>
-                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 03 · Tu perfil</span><p class="tl__d">Te registras en la app (sin costo, 15 min) y completas tu perfil y tu mapa patrimonial antes de la sesión.</p></div></li>
-                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 04 · La sesión</span><p class="tl__d">60 minutos con Natalia: revisa tu diagnóstico, se enfoca en lo que más te preocupa y te recomienda el camino para tu caso.</p></div></li>
-                <li class="tl__item"><span class="tl__node"></span><div class="tl__body"><span class="tl__k">Paso 05 · Tu plan por escrito</span><p class="tl__d">24 horas después recibes un correo firmado por Natalia con la lectura de tu situación, los tres puntos a resolver primero y el camino recomendado, con su precio.</p></div></li>
-              </ol>
-            </div>
-            <div>
-              <h4 class="hserv__h">Qué te llevas por escrito</h4>
-              <p class="hserv__p">24 horas después de la sesión recibes un correo firmado por Natalia con tres bloques: tu situación patrimonial leída en un párrafo, los tres puntos que hay que resolver primero (cada uno con diagnóstico y acción concreta) y el camino recomendado para tu caso, con el precio de ese siguiente paso. Es el criterio de Natalia aplicado a tu situación, por escrito, para que decidas con calma.</p>
-              <p class="hserv__abono">Los $150.000 se abonan al 100% si contratas cualquier servicio con nosotros en los siguientes 30 días. Y si decides no seguir, conservas igual tu perfil en la app y el correo con la lectura de Natalia por escrito.</p>
-            </div>
-          </div>
-        </article>
+        <div class="plans__grid plans__grid--solo reveal">
+          <article class="plan">
+            <div class="plan__name">Diagnóstico patrimonial con Natalia</div>
+            <div class="plan__price">$150.000 <span>· 60 min</span></div>
+            <div class="plan__sub">Videollamada con Natalia Jaramillo, fundadora de ABBA.</div>
+            <p class="plan__promise">Una hora que ordena tu cabeza y te deja un plan por escrito.</p>
+            <div class="plan__addlbl">Qué te llevas</div>
+            <ul class="plan__feats">
+              <li>La lectura de tu situación patrimonial completa</li>
+              <li>Los tres puntos que debes resolver primero</li>
+              <li>El camino recomendado para tu caso, con su precio</li>
+              <li>Un documento por escrito, firmado por Natalia, que te queda para consultar y decidir con calma</li>
+            </ul>
+            <a href="https://calendly.com/abba-asesoria/diagnostico-natalia" target="_blank" rel="noopener" class="plan__cta plan__cta--primary">Agendar con Natalia</a>
+            <p class="plan__note">Preparación previa: completas tu perfil en la app, sin costo.</p>
+          </article>
+        </div>
 
        <!-- <article class="hserv reveal">
           <div class="hserv__top">
@@ -1452,11 +1345,70 @@ section{padding-block:clamp(78px,9vw,128px)}
       </div>
     </section>
 
+    <!-- ENTREGABLE -->
+    <section class="deliv" id="entregable">
+      <div class="wrap">
+        <div class="deliv__top">
+          <div class="reveal">
+            <div class="section-h">
+              <div class="chapter"><b>03</b> Lo que recibes</div>
+              <h2>Qué está en riesgo, cuánto te cuesta y <i>quién lo resuelve.</i></h2>
+              <p>No es un informe para archivar: es el mapa de decisiones de tu patrimonio. Ves qué tienes hoy, qué está expuesto y cuánto te costaría en pesos, la arquitectura que lo ordena y un plan por fases donde cada acción indica el profesional que la haría, tributarista, abogado o consultor patrimonial y su horizonte. Sales sabiendo qué resolver primero, con quién y a qué costo. Ejecutar el plan es un paso aparte: lo haces por tu cuenta o con nuestro equipo, y se cotiza según lo que decidas.</p>
+            </div>
+            <div class="deliv__items">
+              <details class="deliv__item"><summary><span class="deliv__item-n">01</span><span class="deliv__item-t">Estado actual del patrimonio</span><span class="deliv__item-ar" aria-hidden="true"></span></summary><div class="deliv__item-d">Composición por liquidez, categoría de activo y geografía. Cierre anual del flujo de caja.</div></details>
+              <details class="deliv__item"><summary><span class="deliv__item-n">02</span><span class="deliv__item-t">Diagnóstico por dimensión</span><span class="deliv__item-ar" aria-hidden="true"></span></summary><div class="deliv__item-d">Financiera, fiscal, legal y sucesoral. Cada una con su situación documentada y sus vulnerabilidades.</div></details>
+              <details class="deliv__item"><summary><span class="deliv__item-n">03</span><span class="deliv__item-t">Estructura legal, hoy y propuesta</span><span class="deliv__item-ar" aria-hidden="true"></span></summary><div class="deliv__item-d">Cómo está organizado tu patrimonio hoy y cómo quedaría bajo la arquitectura recomendada, en un plano comparativo.</div></details>
+              <details class="deliv__item"><summary><span class="deliv__item-n">04</span><span class="deliv__item-t">Estructura sucesoral con cifras</span><span class="deliv__item-ar" aria-hidden="true"></span></summary><div class="deliv__item-d">Costo real del proceso hoy vs. con Sociedad Patrimonial, en Colombia y en el exterior.</div></details>
+              <details class="deliv__item"><summary><span class="deliv__item-n">05</span><span class="deliv__item-t">Mapa consolidado de vulnerabilidades</span><span class="deliv__item-ar" aria-hidden="true"></span></summary><div class="deliv__item-d">Todos tus riesgos en un solo tablero, ordenados por severidad: crítica, alta y media.</div></details>
+              <details class="deliv__item"><summary><span class="deliv__item-n">06</span><span class="deliv__item-t">Plan de acción por fases</span><span class="deliv__item-ar" aria-hidden="true"></span></summary><div class="deliv__item-d">Acciones concretas, el profesional que haría cada una y su horizonte de tiempo. Ejecutarlas se cotiza aparte.</div></details>
+              <details class="deliv__item"><summary><span class="deliv__item-n">07</span><span class="deliv__item-t">Costos consolidados</span><span class="deliv__item-ar" aria-hidden="true"></span></summary><div class="deliv__item-d">Cuánto cuesta implementar la arquitectura, inversión inicial y gasto anual frente al ahorro que genera.</div></details>
+              <details class="deliv__item"><summary><span class="deliv__item-n">08</span><span class="deliv__item-t">Ruta de ejecución trimestral</span><span class="deliv__item-ar" aria-hidden="true"></span></summary><div class="deliv__item-d">El orden trimestre a trimestre en que se ejecuta cada paso, con la fecha de cierre de cada etapa.</div></details>
+            </div>
+            <p class="deliv__leadnote">Cuando tu caso incluye documentos que requieren interpretación específica, tu declaración de renta, tus extractos bancarios, los certificados de tus inversiones y las carátulas de tus pólizas, y tus reportes del bróker en el exterior cuando aplique, Natalia y el equipo trabajan tu Diseño a la medida sobre esos documentos. Ese es el Diseño con equipo, con su propia cotización según el caso.</p>
+          </div>
+        </div>
+
+        <!-- Muestra: reorganización (visual) -->
+        <div class="deliv__sample">
+          <div class="deliv__sample-h reveal">
+            <div class="chapter">Muestra · Tu estructura, reorganizada</div>
+            <h3>De todo a nombre de una persona a <i>una sola estructura.</i></h3>
+          </div>
+
+          <div class="deliv__viz reveal" aria-hidden="true">
+            <div class="viz-cap">Hoy · todo a nombre de una sola persona</div>
+            <svg viewBox="0 0 680 372" xmlns="http://www.w3.org/2000/svg"><g class="asm" style="animation-delay:0.1s"><rect x="190" y="36" width="300" height="50" rx="10" fill="rgba(255,255,255,0.08)" stroke="#ffffff" stroke-width="1.4"/><text x="340.0" y="54" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Tú · la persona</text><text x="340.0" y="71" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">todo a tu nombre</text></g><line x1="340" y1="86" x2="340" y2="104" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.3s"/><line x1="180" y1="104" x2="500" y2="104" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.35s"/><line x1="180" y1="104" x2="180" y2="118" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.4s"/><line x1="500" y1="104" x2="500" y2="118" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.4s"/><g class="asm" style="animation-delay:0.5s"><rect x="70" y="118" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="180.0" y="136" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">A tu nombre</text><text x="180.0" y="153" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">sin sociedad</text></g><g class="asm" style="animation-delay:0.5s"><rect x="390" y="118" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="500.0" y="136" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Sociedad comercial</text><text x="500.0" y="153" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">SAS · Ltda · S.A.</text></g><line x1="180" y1="168" x2="180" y2="185" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.65s"/><line x1="500" y1="168" x2="500" y2="185" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.65s"/><g class="asm" style="animation-delay:0.8s"><rect x="70" y="185" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="180.0" y="203" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Financiero</text><text x="180.0" y="220" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">3 activos · $1.337M</text></g><line x1="180" y1="235" x2="180" y2="247" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.85s"/><g class="asm" style="animation-delay:0.95s"><rect x="70" y="247" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="180.0" y="265" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Uso personal</text><text x="180.0" y="282" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">1 activo · $15M</text></g><g class="asm" style="animation-delay:0.8s"><rect x="390" y="185" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="500.0" y="203" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Empresarial</text><text x="500.0" y="220" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">1 activo · $3.500M</text></g><line x1="500" y1="235" x2="500" y2="247" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.85s"/><g class="asm" style="animation-delay:0.95s"><rect x="390" y="247" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="500.0" y="265" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Inmuebles</text><text x="500.0" y="282" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">2 activos · $2.900M</text></g><line x1="500" y1="297" x2="500" y2="309" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:1.05s"/><g class="asm" style="animation-delay:1.15s"><rect x="390" y="309" width="220" height="50" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="500.0" y="327" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Uso personal</text><text x="500.0" y="344" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">2 activos · $370M</text></g></svg>
+          </div>
+          <div class="viz-flow">se reorganiza ↓</div>
+          <div class="deliv__viz reveal" aria-hidden="true">
+            <div class="viz-cap viz-cap--good">Después · consolidado bajo una sociedad</div>
+            <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg"><g class="asm" style="animation-delay:0.1s"><rect x="200" y="36" width="280" height="50" rx="10" fill="rgba(255,255,255,0.08)" stroke="#ffffff" stroke-width="1.4"/><text x="340.0" y="54" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Sociedad Patrimonial</text><text x="340.0" y="71" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">holding</text></g><line x1="340" y1="86" x2="340" y2="104" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.3s"/><line x1="130" y1="104" x2="550" y2="104" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.35s"/><line x1="130" y1="104" x2="130" y2="140" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.45s"/><line x1="340" y1="104" x2="340" y2="140" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.45s"/><line x1="550" y1="104" x2="550" y2="140" stroke="rgba(255,255,255,0.30)" stroke-width="0.75" pathLength="1" class="drw" style="animation-delay:0.45s"/><g class="asm" style="animation-delay:0.6s"><rect x="38" y="140" width="184" height="56" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="130.0" y="158" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Empresarial</text><text x="130.0" y="175" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">1 empresa operativa</text></g><g class="asm" style="animation-delay:0.7s"><rect x="248" y="140" width="184" height="56" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="340.0" y="158" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Inmuebles</text><text x="340.0" y="175" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">aportados a la sociedad</text></g><g class="asm" style="animation-delay:0.8s"><rect x="458" y="140" width="184" height="56" rx="10" fill="rgba(255,255,255,0.045)" stroke="#ffffff" stroke-width="1"/><text x="550.0" y="158" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Financiero</text><text x="550.0" y="175" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">portafolio + cuentas</text></g></svg>
+          </div>
+
+          <div class="deliv__sample-h reveal" style="margin-top:clamp(48px,6vw,72px)">
+            <div class="chapter"><b>·</b> Cómo entra tu dinero</div>
+            <h3>Menos pasos y menos comisiones, <i>en días.</i></h3>
+          </div>
+          <div class="deliv__viz reveal" aria-hidden="true"><svg viewBox="0 0 680 234" xmlns="http://www.w3.org/2000/svg"><defs><marker id="mi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2.5 L7.5,5 L0,7.5" fill="none" stroke="context-stroke" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><text x="8" y="76" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#dda49a" letter-spacing="1">ANTES</text><g class="asm" style="animation-delay:0.1s"><rect x="72" y="50" width="120" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="132.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">US$200.000</text></g><line x1="192" y1="76" x2="226" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:0.25s"/><g class="asm" style="animation-delay:0.4s"><rect x="226" y="48" width="214" height="56" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1.2"/><text x="333.0" y="66" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Cadena de apps de dólar</text><text x="333.0" y="83" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">≈US$1.600 · ~69 giros</text></g><line x1="440" y1="76" x2="474" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:0.55s"/><g class="asm" style="animation-delay:0.7s"><rect x="474" y="50" width="156" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="552.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Llega ~US$198.400</text></g><text x="8" y="176" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#8fc4e6" letter-spacing="1">DESPUÉS</text><g class="asm" style="animation-delay:0.95s"><rect x="72" y="150" width="120" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="132.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">US$200.000</text></g><line x1="192" y1="176" x2="226" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:1.1s"/><g class="asm" style="animation-delay:1.25s"><rect x="226" y="148" width="214" height="56" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1.2"/><text x="333.0" y="166" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="13.5" fill="#f4f6f8">Banco aliado · 1 wire</text><text x="333.0" y="183" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10.5" fill="rgba(233,236,239,0.62)">en días · con FDIC</text></g><line x1="440" y1="176" x2="474" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mi)" pathLength="1" class="drw" style="animation-delay:1.4s"/><g class="asm" style="animation-delay:1.55s"><rect x="474" y="150" width="156" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="552.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Llega US$200.000</text></g></svg></div>
+          <p class="deliv__note">Con la cadena de apps de dólar, mover US$200.000 deja ~US$1.600 en comisiones y decenas de transferencias (con topes por giro) que toman semanas. Con el aliado bancario internacional, un solo wire y respaldo del seguro bancario federal (FDIC).</p>
+
+          <div class="deliv__sample-h reveal" style="margin-top:clamp(48px,6vw,72px)">
+            <div class="chapter"><b>·</b> Cómo sale el dinero de tu empresa</div>
+            <h3>De un préstamo con riesgo a <i>una salida formal.</i></h3>
+          </div>
+          <div class="deliv__viz reveal" aria-hidden="true"><svg viewBox="0 0 680 232" xmlns="http://www.w3.org/2000/svg"><defs><marker id="mo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2.5 L7.5,5 L0,7.5" fill="none" stroke="context-stroke" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><text x="8" y="76" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#dda49a" letter-spacing="1">ANTES</text><g class="asm" style="animation-delay:0.1s"><rect x="70" y="50" width="130" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="135.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Empresa</text></g><text x="216" y="40" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10" fill="rgba(233,236,239,0.62)">préstamo del socio</text><line x1="200" y1="76" x2="232" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:0.3s"/><g class="asm" style="animation-delay:0.45s"><rect x="232" y="50" width="110" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1"/><text x="287.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Tú</text></g><line x1="342" y1="76" x2="374" y2="76" stroke="#dda49a" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:0.6s"/><g class="asm" style="animation-delay:0.75s"><rect x="374" y="50" width="234" height="52" rx="10" fill="rgba(221,164,154,0.12)" stroke="#ffffff" stroke-width="1.2"/><text x="491.0" y="76.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#e6b3a9">Riesgo DIAN: renta + sanción</text></g><text x="8" y="176" text-anchor="start" dominant-baseline="central" font-family="Geist Mono,monospace" font-size="10" fill="#8fc4e6" letter-spacing="1">DESPUÉS</text><g class="asm" style="animation-delay:1.0s"><rect x="70" y="150" width="130" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="135.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Empresa</text></g><text x="216" y="140" text-anchor="middle" dominant-baseline="central" font-family="Geist,sans-serif" font-size="10" fill="rgba(233,236,239,0.62)">salario · dividendos</text><line x1="200" y1="176" x2="232" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:1.2s"/><g class="asm" style="animation-delay:1.35s"><rect x="232" y="150" width="110" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1"/><text x="287.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Tú</text></g><line x1="342" y1="176" x2="374" y2="176" stroke="#8fc4e6" stroke-width="1.1" marker-end="url(#mo)" pathLength="1" class="drw" style="animation-delay:1.5s"/><g class="asm" style="animation-delay:1.65s"><rect x="374" y="150" width="234" height="52" rx="10" fill="rgba(143,196,230,0.14)" stroke="#ffffff" stroke-width="1.2"/><text x="491.0" y="176.0" text-anchor="middle" dominant-baseline="central" font-family="Newsreader,serif" font-size="14.0" fill="#f4f6f8">Formal · cierra el frente UGPP</text></g></svg></div>
+
+          <p class="deliv__note">Ejemplo ilustrativo con el formato de la app. Tu plano se construye con tu caso.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- EQUIPO -->
     <section class="team" id="equipo">
       <div class="wrap">
         <div class="section-h reveal">
-          <div class="chapter"><b>06</b> Equipo</div>
+          <div class="chapter"><b>04</b> Equipo</div>
           <h2>No una consultora individual. <i>Un equipo integrado.</i></h2>
           <p>La decisión patrimonial acertada rara vez cabe en una sola disciplina. Nuestro equipo cubre las cuatro que casi siempre hacen falta.</p>
         </div>
@@ -1470,18 +1422,98 @@ section{padding-block:clamp(78px,9vw,128px)}
       </div>
     </section>
 
+    <!-- CÓMO TRABAJAMOS -->
+    <section class="method" id="metodo">
+      <div class="wrap">
+        <div class="section-h reveal">
+          <div class="chapter"><b>05</b> Cómo trabajamos contigo</div>
+          <h2>Una arquitecta patrimonial de tu lado, <i>no un asesor que vende una solución.</i></h2>
+          <p>No es una hora con un especialista para una duda puntual. Es una arquitecta patrimonial que dirige tu caso de principio a fin: lee tu situación completa, alinea a los especialistas que haga falta tributarista, abogado, banca internacional y te entrega decisiones, no tareas. Es independiente: no vive de comisiones, así que su criterio responde solo a tu patrimonio.</p>
+        </div>
+
+        <div class="method__grid">
+          <article class="method__col reveal">
+            <div class="method__n">i.</div>
+            <h3 class="method__t">Independiente</h3>
+            <p class="method__d">Natalia dirige tu caso desde su criterio profesional. Si el diseño incluye productos que ella distribuye (pólizas, portafolios), lo declara y la decisión es tuya. Solo los recomendamos cuando son la mejor herramienta para tu arquitectura.</p>
+          </article>
+          <article class="method__col reveal">
+            <div class="method__n">ii.</div>
+            <h3 class="method__t">Te acompaña y coordina a los especialistas</h3>
+            <p class="method__d">Tienes una sola interlocutora. Natalia convoca al tributarista, al abogado y a los aliados que tu caso requiera, integra sus criterios en una estrategia y te la presenta resuelta. Tú no coordinas especialistas ni reconcilias respuestas dispersas.</p>
+          </article>
+          <article class="method__col reveal">
+            <div class="method__n">iii.</div>
+            <h3 class="method__t">Varias opciones, sustentadas en costo-beneficio</h3>
+            <p class="method__d">No una única respuesta cerrada. Te mostramos los caminos posibles, cada uno con su costo, su ahorro y su riesgo en números. La decisión es tuya; nuestro trabajo es que la tomes con toda la información sobre la mesa.</p>
+          </article>
+        </div>
+
+        <p class="method__foot reveal">Así, cuando decides constituir una sociedad, diversificar en moneda fuerte o resolver tu sucesión, no lo haces por corazonada ni porque alguien te lo vendió: lo haces porque viste los números y elegiste la mejor opción para tu familia.</p>
+      </div>
+    </section>
+
     <!-- TESTIMONIOS -->
     <section class="tst">
       <div class="wrap">
         <div class="section-h reveal">
-          <div class="chapter"><b>07</b> Voces de clientes</div>
+          <div class="chapter"><b>06</b> Voces de clientes</div>
           <h2>Lo que dicen quienes ya lo vivieron.</h2>
         </div>
         <div class="tst__grid">
-          <article class="tst__card reveal"><p class="tst__q">Llevábamos años con el “ya lo organizamos después”. En una sola sesión Natalia nos puso los números enfrente: heredar como estábamos costaba casi $4.000 millones de pesos, y el estate tax de Estados Unidos se llevaba medio millón de dólares más. Hoy esa exposición es cero, tenemos liquidez sin vender un solo activo y mi familia por fin sabe qué hay, dónde está y qué hacer si yo falto. No nos vendió un producto: nos devolvió la tranquilidad.</p><div class="tst__cite"><strong>Familia con patrimonio de $8.200 M</strong>Diversificado entre bolsa internacional y finca raíz</div></article>
+          <article class="tst__card reveal"><p class="tst__q">Llevábamos años con el “ya lo organizamos después”. En una sola sesión Natalia nos puso los números enfrente: heredar como estábamos costaba casi $4.000 millones, y el estate tax de Estados Unidos se llevaba medio millón de dólares más. Hoy esa exposición es cero, tenemos liquidez sin vender un solo activo y mi familia por fin sabe qué hay, dónde está y qué hacer si yo falto. No nos vendió un producto: nos devolvió la tranquilidad.</p><div class="tst__cite"><strong>Familia con patrimonio de $8.200 M</strong>Diversificado entre bolsa internacional y finca raíz</div></article>
           <article class="tst__card reveal"><p class="tst__q">Uno realmente esto no lo sabe… va comprando cositas, va adquiriendo cosas, pero llega un momento en que uno dice: hay que ordenar la casa. Que le digan «estas son las propuestas A, B, C, D, caminos, escoja usted» es válido y es superútil, la verdad.</p><div class="tst__cite"><strong>Profesional con $830 M</strong>Inversión en EE. UU. y participaciones empresariales</div></article>
           <article class="tst__card reveal"><p class="tst__q">Tenía buenos asesores, pero cada uno por su lado. Lo que me faltaba era alguien que uniera todas las piezas en una sola estrategia.</p><div class="tst__cite"><strong>Empresario · patrimonio consolidado</strong>Primera sesión · Jun 2026</div></article>
         </div>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section class="proof">
+      <div class="wrap">
+        <div class="proof__lead reveal">
+          <div class="chapter chapter--light"><b>07</b> Un caso real</div>
+          <h2>Cada peso en la estructura, <i>hasta 106 de vuelta.</i></h2>
+          <p>Caso real anonimizado. Patrimonio de $8.000M, sin deuda, con activos en Colombia y en el exterior. Esto es lo que evita heredar con la arquitectura correcta y lo que gana en el camino.</p>
+        </div>
+
+        <div class="pmetrics reveal">
+          <div class="pmetric"><div class="pmetric__n">USD 532.800 → $0</div><div class="pmetric__l">Estate tax de EE. UU. eliminado por completo</div></div>
+          <div class="pmetric"><div class="pmetric__n">$3.400–3.970M</div><div class="pmetric__l">Exposición sucesoral total evitada</div></div>
+          <div class="pmetric"><div class="pmetric__n">0,47%</div><div class="pmetric__l">Costo de la estructura el primer año, sobre el patrimonio</div></div>
+          <div class="pmetric"><div class="pmetric__n">90–106×</div><div class="pmetric__l">Retorno sobre el costo de la estructura</div></div>
+        </div>
+
+        <div class="proof__grid">
+          <article class="pcard reveal">
+            <div class="pcard__k">Sin la estructura</div>
+            <h3 class="pcard__t">Lo que costaría heredar hoy</h3>
+            <div class="pcard__rows">
+              <div class="prow"><span class="prow__k">Estate tax EE. UU. (NRA) sobre el portafolio</span><span class="prow__v">USD 532.800</span></div>
+              <div class="prow"><span class="prow__k">Costos de sucesión en Colombia</span><span class="prow__v">$1.741–2.301M</span></div>
+              <div class="prow"><span class="prow__k">Utilidades de bolsa tributando como renta ordinaria</span><span class="prow__v">Al 100%</span></div>
+              <div class="prow prow--total"><span class="prow__k">Exposición sucesoral total</span><span class="prow__v">$3.400–3.970M</span></div>
+            </div>
+          </article>
+
+          <article class="pcard pcard--good reveal">
+            <div class="pcard__k">Con la arquitectura</div>
+            <h3 class="pcard__t">Herencia como transferencia de acciones</h3>
+            <div class="pcard__rows">
+              <div class="prow"><span class="prow__k">Estate tax EE. UU. (acciones no US situs)</span><span class="prow__v">$0</span></div>
+              <div class="prow"><span class="prow__k">Costos de sucesión en Colombia</span><span class="prow__v">Minimizados</span></div>
+              <div class="prow"><span class="prow__k">Costo de la estructura · primer año</span><span class="prow__v">0,47%</span></div>
+              <div class="prow prow--total"><span class="prow__k">Retorno sobre lo evitado</span><span class="prow__v">90–106×</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="pwins reveal">
+          <div class="pwin"><div class="pwin__v" data-count="137" data-prefix="$" data-suffix="M al año">$137M al año</div><div class="pwin__d">Con banca privada en EE. UU., la familia toma una línea de crédito contra su portafolio para tener liquidez; como el portafolio rinde más que el costo de la línea, la diferencia le queda a favor, sin vender nada.</div></div>
+          <div class="pwin"><div class="pwin__v" data-count="500000" data-prefix="USD ">USD 500.000</div><div class="pwin__d">Asegurados con cobertura FDIC en el aliado bancario. Antes: $0.</div></div>
+          <div class="pwin"><div class="pwin__v" data-count="100" data-suffix="%">100%</div><div class="pwin__d">De la operación bursátil diagnosticada y reorganizada para tributar mejor.</div></div>
+        </div>
+
       </div>
     </section>
 
@@ -1496,13 +1528,13 @@ section{padding-block:clamp(78px,9vw,128px)}
           <details class="faq__item"><summary>¿Qué diferencia hay entre ABBA y un contador o abogado tradicional?</summary><div class="faq__body"><p>Un contador cumple con tus obligaciones fiscales. Un tributarista optimiza tu carga impositiva en un frente puntual. Un abogado resuelve un problema legal específico. ABBA los coordina a todos alrededor de una <strong>sola estrategia</strong>. No los reemplaza: evita que cada uno tome decisiones aisladas sobre tu patrimonio. Muchos clientes conservan a su contador y usan a ABBA para el diseño patrimonial anual y la coordinación del equipo.</p></div></details>
           <details class="faq__item"><summary>¿Cuál es la diferencia entre pagar los $480K anuales de la app y contratar el Diseño con equipo?</summary><div class="faq__body"><p>El plan Asesor Patrimonial de $480K anuales te da tu arquitectura patrimonial diseñada por la app con base en los datos que cargas: tres escenarios ordenados por relación costo-beneficio, plan sucesoral, hallazgos legales detallados y presupuesto anual con calendario de eventos. Es la herramienta continua que mantiene tu patrimonio ordenado año tras año, con un perfil para cada miembro de tu familia, pareja, padres e hijos, para planear en conjunto.</p><p>El <strong>Diseño con equipo</strong> es cuando tu caso requiere interpretación humana de documentos reales, tu declaración de renta, tus extractos e inversiones, tus pólizas y tus reportes del bróker en el exterior, más criterio profesional del tributarista y coordinación con aliados institucionales. El entregable es un documento privado de ocho capítulos firmado por el equipo. Aquí ya no es la app la que diseña sobre datos que cargas, son los especialistas los que trabajan tu caso sobre documentos que subes.</p><p>Los dos productos son complementarios: la app te ordena la información y te muestra la arquitectura recomendada; el Diseño con equipo valida esa arquitectura sobre tu realidad específica cuando el caso lo requiere.</p></div></details>
           <details class="faq__item"><summary>¿Qué es el Informe de Factibilidad Tributaria?</summary><div class="faq__body"><p>Es el análisis técnico que hace uno de los tributaristas del equipo sobre tu situación fiscal específica antes de que se decida constituir cualquier figura jurídica. Revisa tu declaración de renta actual y las de años recientes, identifica errores del contador anterior o descuentos legales no aprovechados, corre los escenarios comparando qué impuesto pagarías como persona natural frente a cuánto pagarías con una SAS operativa, proyecta cómo cambia esa ecuación a distintos niveles de ingresos, y te da el umbral de facturación a partir del cual sí tiene sentido constituir la sociedad.</p><p>Este análisis está incluido dentro del Diseño con equipo, y es el paso previo obligatorio antes de constituir cualquier sociedad. Hacerlo al revés es caro: constituir una sociedad sin este análisis puede terminar costándote más en contador, obligaciones y formalidades de lo que te ahorra en impuestos. Primero el número, después la decisión.</p></div></details>
-          <details class="faq__item"><summary>¿Qué me llevo del Diagnóstico patrimonial con Natalia si al final decido no contratar nada más?</summary><div class="faq__body"><p>Te llevas dos cosas concretas. Primero, tu perfil completo en la app, porque para prepararte para la sesión te registras en el plan sin costo y completas tu mapa patrimonial, tu perfil personal y fiscal, y tu diagnóstico fiscal calculado. Tendrás acceso a todo eso, sin costo, para siempre.</p><p>Segundo, 24 horas después de la sesión recibes un correo firmado por Natalia con la lectura de tu situación en un párrafo, los tres puntos que ella identificó como prioritarios en tu caso y una recomendación de qué hacer después, aunque no lo hagas con nosotros. Es criterio profesional aplicado a tu caso, por escrito.</p><p>Y si dentro de los siguientes 30 días decides contratar cualquier servicio con nosotros, los $150.000 se abonan al 100%.</p></div></details>
+          <details class="faq__item"><summary>¿Qué me llevo del Diagnóstico patrimonial con Natalia si al final decido no contratar nada más?</summary><div class="faq__body"><p>Te llevas dos cosas concretas. Primero, tu perfil completo en la app, porque para prepararte para la sesión te registras en el plan Sin costo y completas tu mapa patrimonial, tu perfil personal y fiscal, y tu diagnóstico fiscal calculado. Todo eso queda tuyo, sin costo, para siempre.</p><p>Segundo, 24 horas después de la sesión recibes un correo firmado por Natalia con la lectura de tu situación en un párrafo, los tres puntos que ella identificó como prioritarios en tu caso y una recomendación de qué hacer después, aunque no lo hagas con nosotros. Es criterio profesional aplicado a tu caso, por escrito.</p><p>Y si dentro de los siguientes 30 días decides contratar cualquier servicio con nosotros, los $150.000 se abonan al 100%.</p></div></details>
           <details class="faq__item"><summary>¿Cómo se paga y qué pasa si no sigo?</summary><div class="faq__body"><p>La sesión con Natalia ($150.000) se paga al reservar, por transferencia y con envío del comprobante, no cobramos dentro de la plataforma. Reserva con mínimo 24 horas de anticipación para que preparemos tu sesión con tus datos ya cargados. Los $150.000 se abonan al 100% si contratas cualquier servicio con nosotros en los siguientes 30 días; si decides no seguir, conservas igual tu perfil en la app y el correo con la lectura de Natalia.</p></div></details>
           <details class="faq__item"><summary>¿Qué es la Membresía Patrimonial?</summary><div class="faq__body"><p>Aproximadamente <strong>$40.000 COP mensuales</strong> a partir del segundo año, el primer año va incluido cuando trabajas tu Diseño con el equipo. Mantiene la app como el tablero vivo de tu patrimonio, activa la revisión anual del Diseño contra tu realidad actualizada y te da una sesión de calibración cuando cambia algo importante en tu vida patrimonial.</p></div></details>
-          <details class="faq__item"><summary>¿En cuánto tiempo está listo mi Diseño trabajado con el equipo?</summary><div class="faq__body"><p>Cuando trabajas el <strong>Diseño con el equipo</strong>, entre <strong>3 y 5 semanas</strong> según las validaciones que hagan falta. Casos con activos en el exterior o estructuras sucesorales complejas suman una o dos semanas. La entrega ocurre en dos sesiones con Natalia y los especialistas.</p></div></details>
-          <details class="faq__item"><summary>¿Qué patrimonio mínimo se necesita?</summary><div class="faq__body"><p>No hay un mínimo formal ni una cifra rígida. Lo que define si vale la pena no es un número de patrimonio, sino la complejidad de tu caso: activos en varias figuras o países, un negocio en marcha, exposición sucesoral relevante, o ingresos que activan riesgo ante la UGPP. Y no todo el que llega necesita la arquitectura completa: si tu caso es más puntual, lo atendemos igual, un saneamiento financiero para ordenar el flujo, o una planificación tributaria para que dejes de pagar de más. Te diremos con franqueza qué necesitas en la sesión con Natalia, o lo verás en tu diagnóstico gratuito.</p></div></details>
+          <details class="faq__item"><summary>¿En cuánto tiempo está listo mi Diseño trabajado con el equipo?</summary><div class="faq__body"><p>Cuando trabajas la <strong>Diseño con equipo</strong>, entre <strong>3 y 5 semanas</strong> según las validaciones que hagan falta. Casos con activos en el exterior o estructuras sucesorales complejas suman una o dos semanas. La entrega ocurre en dos sesiones con Natalia y los especialistas.</p></div></details>
+          <details class="faq__item"><summary>¿Qué patrimonio mínimo se necesita?</summary><div class="faq__body"><p>No hay un mínimo formal ni una cifra rígida. Lo que define si vale la pena no es un número de patrimonio, sino la complejidad de tu caso: activos en varias figuras o países, un negocio en marcha, exposición sucesoral relevante, o ingresos que activan riesgo ante la UGPP. Y no todo el que llega necesita la arquitectura completa: si tu caso es más puntual, lo atendemos igual, un saneamiento financiero para ordenar el flujo, o una planificación tributaria para que dejes de pagar de más. Te diremos con franqueza qué necesitas en la sesión con Natalia, o lo verás en tu diagnóstico sin costo.</p></div></details>
           <details class="faq__item"><summary>¿La Sociedad Patrimonial vale la inversión?</summary><div class="faq__body"><p>Para patrimonios con activos productivos y exposición sucesoral relevante, sí. En el caso comparado arriba evita hasta cerca de <strong>$3.970M</strong> en costos sucesorales y da control vitalicio al fundador. No es para todos, pero cuando aplica el retorno es contundente.</p></div></details>
-          <details class="faq__item"><summary>¿Qué es exactamente el diagnóstico gratuito?</summary><div class="faq__body"><p>Los primeros cinco módulos de la app: mapa patrimonial, ingresos y gastos, endeudamiento, ahorro y solvencia, gastos no periódicos. Ves tu patrimonio neto real, tu capacidad de ahorro, tu exposición patrimonial y un primer vistazo a tus riesgos. Toma unos 20 minutos.</p></div></details>
+          <details class="faq__item"><summary>¿Qué es exactamente el diagnóstico sin costo?</summary><div class="faq__body"><p>Los primeros cinco módulos de la app: mapa patrimonial, ingresos y gastos, endeudamiento, ahorro y solvencia, gastos no periódicos. Ves tu patrimonio neto real, tu capacidad de ahorro, tu exposición patrimonial y un primer vistazo a tus riesgos. Toma unos 20 minutos.</p></div></details>
           <details class="faq__item"><summary>¿Analizan si me conviene tener activos como persona natural vs. sociedad?</summary><div class="faq__body"><p>Sí, es una de las comparaciones centrales. Corremos las simulaciones con tus cifras (ingresos, patrimonio, tipo de activo, plazo) y comparamos persona natural vs. distintas figuras societarias según tu caso. Ves el impacto tributario, patrimonial y sucesoral de cada alternativa en pesos.</p></div></details>
           <details class="faq__item"><summary>¿Atienden clientes fuera de Colombia?</summary><div class="faq__body"><p>Sí. Trabajamos con colombianos en el exterior, con inversores extranjeros que traen capital al país y con casos multi-jurisdicción. Todo el proceso es virtual, sesiones por videollamada, app en cualquier dispositivo y entregables digitales.</p></div></details>
           <details class="faq__item"><summary>¿Cómo se protege mi información?</summary><div class="faq__body"><p>La app usa cifrado en tránsito y en reposo. Solo tú y el equipo asignado a tu caso ven tus datos. No compartimos con terceros ni vendemos información. Puedes exportar o eliminar tu información cuando quieras.</p></div></details>
@@ -1516,7 +1548,7 @@ section{padding-block:clamp(78px,9vw,128px)}
         <h2 class="cta__t">Empieza por <i>conocer tu patrimonio.</i></h2>
         <p class="cta__s">El diagnóstico inicial no cuesta nada. En 20 minutos vas a ver lo que llevabas años sin ver.</p>
         <div class="cta__ctas">
-          <a href="/app/" class="btn btn--primary btn--lg">Iniciar diagnóstico gratuito</a>
+          <a href="/app/" class="btn btn--primary btn--lg">Iniciar diagnóstico sin costo</a>
           <a href="#empezar" class="btn btn--ghost btn--lg">Agendar mi Diagnóstico patrimonial con Natalia</a>
         </div>
       </div>
